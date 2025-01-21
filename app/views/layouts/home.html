@@ -1,0 +1,32 @@
+{% extends "./base.njk" %}
+{% from "./macros/card.njk" import card %}
+
+{% block content %}
+
+  <div class="app-masthead ">
+      <div class="app-layout__content">
+    <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">
+      MoJ Design System
+    </h1>
+    <p>
+      Use the MoJ Design System to learn from the work and experiences of others, contribute back into the design system to share your knowledge, and reuse as much as possible to avoid repeating what has already been done.
+    </p>
+      </div>
+  </div>
+
+  <div class="app-layout__content">
+      <div class="app-cards">
+        {% call card({title: "What's new" })%}
+          <p class="govuk-body">26 November 2024: We’ve archived the <a href="/archive/password-reveal/">password reveal component</a>. We recommend that teams use the <a href="https://design-system.service.gov.uk/components/password-input/">GOV.UK Design System password input</a> instead.</p>
+        {% endcall %}
+
+        {% call card({title: "Contribute to the MoJ Design System" })%}
+            <p>Anyone can contribute to the MoJ Design System by proposing a new style, component, or pattern.</p>
+            <p><a href="/get-involved/contribute" class="govuk-link">Propose a contribution</a> to the MoJ Design System.</p>
+        {% endcall %}
+    </div>
+
+    {{ content | safe }}
+  </div>
+
+{% endblock %}

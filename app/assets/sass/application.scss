@@ -1,0 +1,35 @@
+$moj-page-width: 1220px !default;
+$govuk-page-width: 1220px !default;
+$moj-assets-path: "../" !default;
+$govuk-assets-path: "../" !default;
+
+// GOV.UK Frontend
+@import "node_modules/govuk-frontend/dist/govuk/all";
+
+// MOJ Frontend
+@import "src/moj/all";
+
+// highlight.js
+@import "node_modules/highlight.js/scss/github.scss";
+
+// Custom documentation components
+@import "./components/back-to-top";
+@import "./components/cookie-banner";
+@import "./components/copy-button";
+@import "./components/example";
+@import "./components/layout";
+@import "./components/prose";
+@import "./components/masthead";
+@import "./components/panel";
+@import "./components/tabs";
+@import "./components/header";
+@import "./components/footer";
+@import "./components/vertical-nav";
+@import "./components/page";
+@import "./components/menu-toggle";
+@import "./components/app-card";
+
+
+@view-transition {
+  navigation: auto;
+}

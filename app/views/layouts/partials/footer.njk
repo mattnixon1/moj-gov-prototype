@@ -1,0 +1,22 @@
+
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{{ govukFooter({
+  classes: "govuk-footer--docs",
+  meta: {
+    items: [
+      {
+        href: '/help',
+        text: "Get help"
+      },
+      {
+        href: '/cookies',
+        text: "Cookies"
+      },
+      {
+        href: '/accessibility',
+        text: "Accessibility"
+      }
+    ]
+  }
+}) }}
