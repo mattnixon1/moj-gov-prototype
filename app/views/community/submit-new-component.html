@@ -1,0 +1,56 @@
+{% extends "../layouts/base.html" %}
+{% from "../layouts/macros/card.njk" import card %}
+
+{% block content %}
+  <div class="app-layout__content">
+    <span class="govuk-caption-l">Get involved</span>
+    <h1>Community collaboration </h1>
+
+  Contents
+— Overview of community collaboration
+— Submitting new components to the design system
+— Adding information to an existing component
+
+<h2>Submitting new components</h2>
+
+    <p>You can submit a new component directly in the design system.</p>
+
+    <p>This is a 4-step process where you have to add:</p>
+
+    <ul class="govuk-list govuk-list--bullets">
+      <li>basic information about the component</li>
+      <li>an image of the component</li>
+      <li>your personal details</li>
+    </ul>
+    <p>This gives the design system team a basic understanding of the component and how to use it. As well as the means to contact you if required.</p>
+
+    <h3>All new components are reviewed by the design team</h3>
+
+    <p>The MoJ Design System team review new components before they go live. This can take up to 5 working days.</p>
+
+    <p>The review involves the team checking the information and image you provided. And ensuring there is enough information to be useful to all users of the design system.</p>
+
+    <h3>What happens after the review?</h3>
+
+    <p>If there are no issues and the team does not need to contact you, the component will be added to the design system. It will include a 'community' tag. This means it is still in the development phase and not yet a complete component.</p>
+
+    <p>The team will contact you by email when the component goes live.</p>
+
+
+    <form action="" method="POST">
+      <button type="submit" data-prevent-double-click="true" class="govuk-button" data-module="govuk-button">
+        Confirm and send
+      </button>
+    </form>
+
+    
+Previous
+<p>
+      <a href="">Overview of community collaboration</a>
+    </p>
+Next
+<p>
+      <a href="">Adding information to an existing component</a>
+    </p>
+  </div>
+{% endblock %}

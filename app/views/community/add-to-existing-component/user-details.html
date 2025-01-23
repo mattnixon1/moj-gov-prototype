@@ -1,0 +1,74 @@
+{% extends "../../layouts/base.html" %}
+
+{% block content %}
+  <div class="app-layout__content">
+    <form action="" method="POST">
+      <span class="govuk-caption-l">Add to an existing component</span>
+      <h1>Your details</h1>
+
+      <p>Providing your personal information means the team can contact you to discuss the component further, if required. The team will also let you when the component goes live in the design system.</p>
+
+      <p>With your permission, your name and email address will be added to the component page to show you added it to the design system.</p>
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukInput({
+        label: {
+          text: "Full name",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "event-name",
+        name: "eventName"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Email address",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "event-name",
+        name: "eventName"
+      }) }}      
+
+      {{ govukCheckboxes({
+        name: "countries",
+        fieldset: {
+          legend: {
+            text: "[sharing your details]",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "Select all that apply"
+        },
+        items: [
+          {
+            value: "france",
+            text: "Share my name on the component and community pages"
+          },
+          {
+            value: "portugal",
+            text: "Share my name and email when requested by the team"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "none",
+            text: "No, do not share any of my details online or when requested",
+            behaviour: "exclusive"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

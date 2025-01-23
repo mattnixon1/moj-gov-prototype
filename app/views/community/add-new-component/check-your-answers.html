@@ -1,0 +1,236 @@
+{% extends "../../layouts/base.html" %}
+{#
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+#}
+
+{% block content %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  <div class="app-layout__content">
+
+    {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+    
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Check your answers before submitting the component</h1>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+      <h2 class="govuk-heading-m">Component details</h2>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "[component name]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Description"
+            },
+            value: {
+              text: "[description]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How component is used"
+            },
+            value: {
+              text: "[how component is used]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "customer reference"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What problem did it solve"
+            },
+            value: {
+              html: "[problem solved]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Supporting file"
+            },
+            value: {
+              html: '[file]'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "contact details"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Your details</h2>
+
+      {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "[name]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "previous application number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: "[email]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence type"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Role"
+            },
+            value: {
+              html: "[role]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "home address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Team"
+            },
+            value: {
+              text: "[team]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence period"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Share your details"
+            },
+            value: {
+              text: "[share details]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence period"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Share your details with others"
+            },
+            value: {
+              text: "[share]"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence period"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    <form action="" method="POST">
+      {{ govukButton({
+      text: "Accept and send"
+    }) }}
+    </form>
+  </div>
+{% endblock %}
