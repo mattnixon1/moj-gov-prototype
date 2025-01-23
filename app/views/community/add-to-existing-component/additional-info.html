@@ -4,7 +4,7 @@
   <div class="app-layout__content">
     <form action="" method="POST">
       <span class="govuk-caption-l">Add to an existing component</span>
-      <h1>Accessibility findings</h1>
+      <h1>Additional information</h1>
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
       {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
@@ -15,7 +15,7 @@
         id: "word-count",
         maxwords: 500,
         label: {
-          text: "Tell us more about how it has been accessibility tested and the findings",
+          text: "Do you have any further supporting information about this component?",
           classes: "govuk-label--m",
           isPageHeading: false
         }
