@@ -2,13 +2,76 @@
 {% from "../layouts/macros/card.njk" import card %}
 
 {% block content %}
-<div class="app-layout__content">
-  <span class="govuk-caption-l">Community components</span>
-  <h1>Test</h1>
+  <div class="app-layout__content">
+    <span class="govuk-caption-l">Community components</span>
+    <h1>{{ data['component-name'] or "Spinner" }}</h1>
 
-  <h2>When to use</h2>
+    <style>
+      .moj-sub-navigation__link[aria-current=page]:before {
+        //bottom:-5px
+      }
 
-  <a href="../community/add-to-existing-component/start">add to component</a>
+      .app-prose-scope ul,
+      .govuk-list--bullet {
+        padding: 0;
+      }
+
+      .moj-sub-navigation__link {
+        margin-bottom: -4px;
+      }
+    </style>
+
+    <nav class="moj-sub-navigation" aria-label="Sub navigation">
+      <ul class="moj-sub-navigation__list">
+        <li class="moj-sub-navigation__item">
+          <a class="moj-sub-navigation__link" id="link-overview" href="#overview" aria-current="page">Overview</a>
+        </li>
+        <li class="moj-sub-navigation__item">
+          <a class="moj-sub-navigation__link" id="link-code-stuff" href="#code-stuff">Code Stuff</a>
+        </li>
+        <li class="moj-sub-navigation__item">
+          <a class="moj-sub-navigation__link" id="link-additional-info" href="#additional-info">Additional Info</a>
+        </li>
+        <li class="moj-sub-navigation__item">
+          <a class="moj-sub-navigation__link" id="link-contribution" href="#contribution">Contribution</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="overview" class="content-section">
+      <img src="" alt="Image of component" style="width: 100%; height: auto; margin-bottom: 30px;">
+      
+      <h2>Overview</h2>
+      
+      <p>{{ data['component-overview'] or 'Component overview' }}</p>
+      
+      <h2>Why is the component needed</h2>
+      
+      <p>{{ data['component-problem-solved'] or "Why is the component needed" }}</p>
+      
+      <p><a href="">Have you used this component in your service? Tell us what problem it solved.</a></p>
+
+      <h2>Current uses for the component</h2>
+      <p>{{ data['component-how-used'] or "Current uses for the component" }}</p>
+      <p><a href="">Have you used this component in your service? Tell us how you used it.</a></p>
+
+  </div>
+
+  <div id="code-stuff" class="content-section" style="display:none;">
+    <h2>Code Stuff</h2>
+    <p>[code stuff]</p>
+  </div>
+
+  <div id="additional-info" class="content-section" style="display:none;">
+    <h2>Additional Info</h2>
+    <p>[additional info]</p>
+  </div>
+
+  <div id="contribution" class="content-section" style="display:none;">
+    <h2>Contribution</h2>
+    <p>[contribution]</p>
+  </div>
+
 {#
   <p>Use this component when users need to add similar information a couple of times, such as several names for a single application.</p>
 
@@ -38,4 +101,49 @@
   <p>People with low vision have also reported difficulty interacting with the remove button. This is because by default it is aligned to the right of the page away from their main focus.</p>
   </div>
   #}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+const links = document.querySelectorAll('.moj-sub-navigation__link');
+const sections = document.querySelectorAll('.content-section');
+
+// Hide all sections except the first one
+sections.forEach((section, index) => {
+  if (index !== 0) {
+    section.style.display = 'none';
+  }
+});
+
+// Set aria-current attribute to the first link
+links[0].setAttribute('aria-current', 'page');
+
+links.forEach(link => {
+  link.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    // Hide all sections
+    sections.forEach(section => {
+      section.style.display = 'none';
+    });
+
+    // Remove aria-current attribute from all links
+    links.forEach(link => {
+      link.removeAttribute('aria-current');
+    });
+
+    // Show the clicked section
+    const targetId = this
+      .getAttribute('href')
+      .substring(1);
+    document
+      .getElementById(targetId)
+      .style
+      .display = 'block';
+
+    // Set aria-current attribute to the clicked link
+    this.setAttribute('aria-current', 'page');
+  });
+});
+});
+</script>
+
 {% endblock %}

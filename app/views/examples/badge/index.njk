@@ -1,12 +1,30 @@
----
-layout: layouts/example.njk
-title: Add another (example)
-arguments: badge
-figma_link: https://www.figma.com/file/N2xqOFkyehXwcD9DxU1gEq/MoJ-Figma-Kit?type=design&node-id=66-5788&mode=design
----
-
 {%- from "moj/components/badge/macro.njk" import mojBadge -%}
 
-{{ mojBadge({
-  text: 'Recently added'
-}) }}
+<div class="app-example__new-window" style="position: relative; top:0; left:0">
+  <a href="/examples/add-another" target="_blank">Open this example <span class="govuk-visually-hidden">(Add another (example))</span> in a new window</a>
+</div>
+
+<div class="app-example__wrapper" style="border-left: 1px solid #b1b4b6; border-right: 1px solid #b1b4b6; margin:0; padding:30px" >
+  <div data-module="moj-add-another">
+    <div data-module="moj-add-another">
+
+      {{ mojBadge({
+        text: 'Recently added'
+      }) }}
+    </div>
+  </div>
+</div>
+
+<div class="app-tabs" data-module="app-tabs" style="margin:0; border: 1px solid #b1b4b6" >
+  <ul class="app-tabs__list" style="border:none" role="tablist">
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#html-default--examples-add-another" role="tab" id="tab_html-default--examples-add-another" aria-controls="html-default--examples-add-another">HTML <span class="govuk-visually-hidden">(Add another (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#nunjucks-default--examples-add-another" role="tab" id="tab_nunjucks-default--examples-add-another" aria-controls="nunjucks-default--examples-add-another">Nunjucks <span class="govuk-visually-hidden">(Add another (example))</span></a>
+    </li>
+    <li class="app-tabs__list-item" role="presentation">
+      <a class="app-tabs__tab" href="#figma-default--examples-add-another" role="tab" id="tab_figma-default--examples-add-another" aria-controls="figma-default--examples-add-another">Figma</a>
+    </li>
+  </ul>
+</div>

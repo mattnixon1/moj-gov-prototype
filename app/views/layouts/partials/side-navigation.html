@@ -413,8 +413,32 @@
 
     (function () {
 
+        // this doesn't quite work for all sections, need to rename commmuity to get involved
+
+
         console.log("Example page has loaded!");
         var list = document.getElementsByClassName("app-vertical-nav__item app-vertical-nav__item--with-children");
+
+        // get a list of all the button elements that are in the side navigation
+        var buttons = document.getElementsByClassName("app-vertical-nav__toggle");
+
+        // get the url for the page, if the page is a sub page then open the menu for that section
+        var url = document.location.href;
+        
+        // split up the url and grab the first parameter
+        url = url.split("/")[3].toLowerCase();
+
+        // split up the url and grab the first parameter, replace the - with a space
+        url = url.split("-").join(" ");
+
+        // cycle through the button list and check if the inner text matches the url and if it does then open the menu
+        for (i = 0; i < buttons.length; i++) {
+            if (buttons[i].innerText.toLowerCase() == url) {
+                buttons[i].parentElement.classList.toggle("app-vertical-nav__item--open");
+                buttons[i].toggleAttribute("aria-expanded");
+                buttons[i].nextElementSibling.toggleAttribute("hidden");
+            }
+        }
 
         for (i = 0; i < list.length; i++) {
             list[i].addEventListener("click", function () {
