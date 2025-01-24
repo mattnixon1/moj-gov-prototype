@@ -152,17 +152,34 @@
         rows: [
           {
             key: {
-              text: "Prototype file and link"
+              text: "Prototype file and link address"
             },
             value: {
-              text: data['add-link'] or "default link"
+              text: data['link-url'] or "default url"
             },
             actions: {
               items: [
                 {
                   href: "add-link",
                   text: "Change",
-                  visuallyHiddenText: "prototype file and links"
+                  visuallyHiddenText: "prototype file and links address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Prototype file and link information"
+            },
+            value: {
+              text: data['link-info'] or "default info"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-link",
+                  text: "Change",
+                  visuallyHiddenText: "prototype file and links information"
                 }
               ]
             }
@@ -237,6 +254,23 @@
     {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
+          {
+            key: {
+              text: "Additional information"
+            },
+            value: {
+              text: data['additional-info'] or 'default info'
+            },
+            actions: {
+              items: [
+                {
+                  href: "additional-info",
+                  text: "Change",
+                  visuallyHiddenText: "additional information"
+                }
+              ]
+            }
+          },
           {
             key: {
               text: "Name"
