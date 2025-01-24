@@ -6,12 +6,90 @@
     <span class="govuk-caption-l">Get involved</span>
     <h1>Community collaboration </h1>
 
-  Contents
-— Overview of community collaboration
-— Submitting new components to the design system
-— Adding information to an existing component
+    <style>
+      .part-navigation-container {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #b1b4b6;
+      }
 
-<h2>Add information to an existing component</h2>
+      .gem-c-contents-list {
+        position: relative;
+        z-index: 1;
+        //background: #fff;
+        box-shadow: 0 20px 15px -10px #fff;
+      }
+
+      .app-prose-scope ol,
+      .govuk-list--number {
+        padding-left: 0;
+      }
+
+      .gem-c-contents-list__title {
+        margin: 0;
+        color: #0b0c0c;
+        font-family: "GDS Transport", arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5;
+
+      }
+
+      .gem-c-contents-list__list,
+      .gem-c-contents-list__nested-list {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        color: #0b0c0c;
+        font-family: "GDS Transport", arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.25;
+      }
+
+      .gem-c-contents-list__list-item--dashed {
+        position: relative;
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+
+      .gem-c-contents-list__list-item {
+        padding-top: 10px;
+        line-height: 1.3;
+        list-style-type: none;
+      }
+
+      .gem-c-contents-list__list-item--dashed .gem-c-contents-list__list-item-dash::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        width: 20px;
+        overflow: hidden;
+      }
+    </style>
+
+    <aside class="part-navigation-container" role="complementary">
+      <nav dclass="gem-c-contents-list govuk-!-margin-bottom-4">
+        <h2 class="gem-c-contents-list__title">Contents</h2>
+        <ol class="gem-c-contents-list__list">
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="collaborate-with-the-community">Overview of community collaboration</a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-c-force-print-link-styles" href="submit-new-component">Submitting new components to the design system</a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active" aria-current="true">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>Adding information to an existing component</li>
+        </ol>
+      </nav>
+    </aside>
+
+    <h2>Add information to an existing component</h2>
 
     <p>After a 'community' component has been published live on the design system, you, and other users, have the opportunity to continue developing it.</p>
 
@@ -59,13 +137,14 @@
 
     <p>If there are no issues and the team does not need to contact you, the information will be added to the component in the design system.</p>
 
-[Add more component information]
+    {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
-
-Previous
-<p>
-      <a href="">Submitting new components</a>
-    </p>
+    {{ govukPagination({
+      previous: {
+        labelText: "Submitting new components",
+        href: "submit-new-component"
+      }
+    }) }}
 
   </div>
 {% endblock %}
