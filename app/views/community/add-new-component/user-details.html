@@ -20,13 +20,10 @@
           classes: "govuk-label--m",
           isPageHeading: false
         },
-        id: "event-name",
-        name: "eventName",
+        id: "user-name",
+        name: "user-name",
         classes: "govuk-input--width-20"
       }) }}
-
-
-
 
       {{ govukInput({
         label: {
@@ -34,13 +31,13 @@
           classes: "govuk-label--m",
           isPageHeading: false
         },
-        id: "event-name",
-        name: "eventName",
+        id: "user-email",
+        name: "user-email",
         classes: "govuk-input--width-30"
       }) }}      
 
       {{ govukCheckboxes({
-        name: "countries",
+        name: "share-preferences",
         fieldset: {
           legend: {
             text: "[sharing your details]",
@@ -53,18 +50,18 @@
         },
         items: [
           {
-            value: "france",
+            value: "share-all",
             text: "Share my name on the component and community pages"
           },
           {
-            value: "portugal",
+            value: "share-on-request",
             text: "Share my name and email when requested by the team"
           },
           {
             divider: "or"
           },
           {
-            value: "none",
+            value: "share-none",
             text: "No, do not share any of my details online or when requested",
             behaviour: "exclusive"
           }

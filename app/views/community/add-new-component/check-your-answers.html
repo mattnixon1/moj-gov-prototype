@@ -9,7 +9,7 @@
 #}
 
 {% block content %}
-{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
   <div class="app-layout__content">
 
@@ -17,16 +17,16 @@
     text: "Back",
     href: "#"
   }) }}
-    
-      <span class="govuk-caption-l">Submit new component</span>
-      <h1>Check your answers before submitting the component</h1>
 
-      {% from "govuk/components/button/macro.njk" import govukButton %}
-      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+    <span class="govuk-caption-l">Submit new component</span>
+    <h1>Check your answers before submitting the component</h1>
 
-      <h2 class="govuk-heading-m">Component details</h2>
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
-      {{ govukSummaryList({
+    <h2 class="govuk-heading-m">Component details</h2>
+
+    {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
           {
@@ -34,14 +34,14 @@
               text: "Name"
             },
             value: {
-              text: "[component name]"
+              text: data['component-name'] or "default name"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "component-details",
                   text: "Change",
-                  visuallyHiddenText: "name"
+                  visuallyHiddenText: "component details"
                 }
               ]
             }
@@ -51,14 +51,14 @@
               text: "Description"
             },
             value: {
-              text: "[description]"
+              text: data['component-overview'] or "something else"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "component-details",
                   text: "Change",
-                  visuallyHiddenText: "date of birth"
+                  visuallyHiddenText: "overview of component"
                 }
               ]
             }
@@ -68,14 +68,14 @@
               text: "How component is used"
             },
             value: {
-              text: "[how component is used]"
+              text: data['component-how-used'] or "default info"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "component-details",
                   text: "Change",
-                  visuallyHiddenText: "customer reference"
+                  visuallyHiddenText: "how the component is being used in your service"
                 }
               ]
             }
@@ -85,14 +85,14 @@
               text: "What problem did it solve"
             },
             value: {
-              html: "[problem solved]"
+              html: data['component-problem-solved'] or "default info"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "component-details",
                   text: "Change",
-                  visuallyHiddenText: "address"
+                  visuallyHiddenText: "what problem the component solved"
                 }
               ]
             }
@@ -102,14 +102,14 @@
               text: "Supporting file"
             },
             value: {
-              html: '[file]'
+              html: data['component-screenshot'] or "temp file"
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "component-screenshot",
                   text: "Change",
-                  visuallyHiddenText: "contact details"
+                  visuallyHiddenText: "the image of the component"
                 }
               ]
             }
@@ -117,9 +117,124 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">Your details</h2>
+    {#{% if data['share-findings'] == "yes" %}#}
+    <h2 class="govuk-heading-m">Accessibility findings</h2>
 
-      {{ govukSummaryList({
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Accessibility findings"
+            },
+            value: {
+              text: data['add-findings'] or "default findings"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-findings",
+                  text: "Change",
+                  visuallyHiddenText: "accessibility findings"
+                }
+              ]
+            }
+          }   
+        ]
+      }) }}
+    {#{% endif %}#}
+
+    {#{% if data['share-link'] == "yes" %}#}
+    <h2 class="govuk-heading-m">Prototype file and link</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Prototype file and link"
+            },
+            value: {
+              text: data['add-link'] or "default link"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-link",
+                  text: "Change",
+                  visuallyHiddenText: "prototype file and links"
+                }
+              ]
+            }
+          }   
+        ]
+      }) }}
+    {#{% endif %}#}
+
+    {#{% if data['share-code'] == "yes" %}#}
+    <h2 class="govuk-heading-m">Component code</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Code language"
+            },
+            value: {
+              text: data['code-language'] or "default language"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-code",
+                  text: "Change",
+                  visuallyHiddenText: "component code language"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Code usage"
+            },
+            value: {
+              text: data['code-usage'] or "default usage"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-code",
+                  text: "Change",
+                  visuallyHiddenText: "component code usage"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Code"
+            },
+            value: {
+              text: data['code-code'] or "default code"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-code",
+                  text: "Change",
+                  visuallyHiddenText: "component code"
+                }
+              ]
+            }
+          }   
+        ]
+      }) }}
+    {#{% endif %}#}
+
+    <h2 class="govuk-heading-m">Your details</h2>
+
+    {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
           {
@@ -127,14 +242,14 @@
               text: "Name"
             },
             value: {
-              text: "[name]"
+              text: data['user-name'] or 'default name'
             },
             actions: {
               items: [
                 {
-                  href: "#",
+                  href: "user-details",
                   text: "Change",
-                  visuallyHiddenText: "previous application number"
+                  visuallyHiddenText: "your name"
                 }
               ]
             }
@@ -144,7 +259,7 @@
               text: "Email address"
             },
             value: {
-              text: "[email]"
+              text: data['user-email'] or 'default email'
             },
             actions: {
               items: [
@@ -158,61 +273,10 @@
           },
           {
             key: {
-              text: "Role"
-            },
-            value: {
-              html: "[role]"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "home address"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Team"
-            },
-            value: {
-              text: "[team]"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "licence period"
-                }
-              ]
-            }
-          },
-          {
-            key: {
               text: "Share your details"
             },
             value: {
-              text: "[share details]"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "Change",
-                  visuallyHiddenText: "licence period"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Share your details with others"
-            },
-            value: {
-              text: "[share]"
+              text: data['share-preferences'] or 'default preferences'
             },
             actions: {
               items: [

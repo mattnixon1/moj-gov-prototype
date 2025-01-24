@@ -22,14 +22,14 @@
           classes: "govuk-label--m",
           isPageHeading: false
         },
-        id: "event-name",
-        name: "eventName",
+        id: "component-name",
+        name: "component-name",
         classes: "govuk-input--width-30"
       }) }}
 
       {{ govukCharacterCount({
-        name: "wordCount",
-        id: "word-count",
+        name: "component-overview",
+        id: "component-overviewt",
         maxwords: 250,
         label: {
           text: "Add an overview description about the component",
@@ -39,8 +39,8 @@
       }) }}
 
       {{ govukCharacterCount({
-        name: "wordCount",
-        id: "word-count",
+        name: "component-how-used",
+        id: "component-how-used",
         maxwords: 250,
         label: {
           text: "How is the component being used in your service?",
@@ -50,8 +50,8 @@
       }) }}
 
       {{ govukCharacterCount({
-        name: "wordCount",
-        id: "word-count",
+        name: "component-problem-solved",
+        id: "component-problem-solved",
         maxwords: 250,
         label: {
           text: "What problem did the component solve?",
