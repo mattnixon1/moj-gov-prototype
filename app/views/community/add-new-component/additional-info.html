@@ -3,7 +3,11 @@
 {% block content %}
   <div class="app-layout__content">
     <form action="" method="POST">
-      <span class="govuk-caption-l">Add to an existing component</span>
+      {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
       <h1>Additional information</h1>
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -15,7 +19,7 @@
         id: "additional-info",
         maxwords: 500,
         label: {
-          text: "Do you have any further supporting information about this component?",
+          text: "Add any further supporting information you have about this component",
           classes: "govuk-label--m",
           isPageHeading: false
         }

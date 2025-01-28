@@ -18,7 +18,11 @@
     href: "#"
   }) }}
 
-    <span class="govuk-caption-l">Submit new component</span>
+    {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
     <h1>Check your answers before submitting the component</h1>
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -113,7 +117,7 @@
                 }
               ]
             }
-          }
+          } if data['flow'] != "existing"
         ]
       }) }}
 

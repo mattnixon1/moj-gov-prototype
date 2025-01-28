@@ -2,8 +2,12 @@
 
 {% block content %}
   <div class="app-layout__content">
-    <form action="" method="POST">
-      <span class="govuk-caption-l">Submit new component</span>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
       <h1>Upload an image of the component</h1>
 
       <p>You also need to upload an image showing what the component looks like. It should not contain any personal or sensitive information.</p>

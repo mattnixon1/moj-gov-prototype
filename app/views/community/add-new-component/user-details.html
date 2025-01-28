@@ -3,7 +3,11 @@
 {% block content %}
   <div class="app-layout__content">
     <form action="" method="POST">
-      <span class="govuk-caption-l">Submit new component</span>
+      {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
       <h1>Your details</h1>
 
       <p>Providing your personal information means the team can contact you to discuss the component further, if required. The team will also let you when the component goes live in the design system.</p>
@@ -40,7 +44,7 @@
         name: "share-preferences",
         fieldset: {
           legend: {
-            text: "[sharing your details]",
+            text: "Select how you allow us to share your personal details ",
             isPageHeading: false,
             classes: "govuk-fieldset__legend--m"
           }
@@ -50,27 +54,33 @@
         },
         items: [
           {
-            value: "share-all",
-            text: "Share my name on the component and community pages"
+            value: "Add my name and email address to the component page",
+            text: "Add my name and email address to the component page"
           },
           {
-            value: "share-on-request",
-            text: "Share my name and email when requested by the team"
+            value: "Only share my name and email address when requested by other users",
+            text: "Only share my name and email address when requested by other users"
           },
           {
             divider: "or"
           },
           {
-            value: "share-none",
-            text: "No, do not share any of my details online or when requested",
+            value: "Do not share my personal details with anyone",
+            text: "Do not share my personal details with anyone",
             behaviour: "exclusive"
           }
         ]
       }) }}
 
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+      {{ govukInsetText({
+        text: "If you do not allow us to share your personal information, this may not represent a 'community component'. This prevents us, and others, getting in touch with you. Meaning it may stop the continuing collaboration of the component."
+      }) }}
+
       {{ govukButton({
       text: "Continue"
-    }) }}
+      }) }}
     </form>
   </div>
 {% endblock %}

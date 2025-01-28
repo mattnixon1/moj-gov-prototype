@@ -50,8 +50,13 @@
     </nav>
 
     <div id="overview" class="content-section">
-      <img src="" alt="Image of component" style="width: 100%; height: auto; margin-bottom: 30px;">
+      <!-- show the base 64 image in the src attribute -->
 
+      <img src="data:image/png;base64,{{ data.base64Image }}" alt="Image of component" style="width: 100%; height: auto; margin-bottom: 30px;">
+      <!--<img src="spinner" alt="Image of component" style="width: 100%; height: auto; margin-bottom: 30px;">
+      <img src="data:image/png;base64,{{ data['base64Image'] }}" alt="Image of component" style="width: 100%; height: auto; margin-bottom: 30px;">-->
+      
+      <!--<p>{{ data['base64Image']}}</p>-->
       <h2>Overview</h2>
 
       <p>{{ data['component-overview'] or 'Component overview' }}</p>
@@ -61,7 +66,7 @@
       <p>{{ data['component-problem-solved'] or "Why is the component needed" }}</p>
 
       <p>
-        <a href="">Have you used this component in your service? Tell us what problem it solved.</a>
+        <a href="../community/add-new-component/component-owner?flow=existing">Have you used this component in your service? Tell us what problem it solved.</a>
       </p>
 
       <h2>Current uses for the component</h2>

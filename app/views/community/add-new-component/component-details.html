@@ -3,40 +3,49 @@
 {% block content %}
   <div class="app-layout__content">
     <form action="" method="POST">
-      <span class="govuk-caption-l">Submit new component</span>
+      {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
       <h1>Component details</h1>
 
-      <p>Specific information is required when submitting a component to the design system. This gives users a basic understanding of the component and how to use it.</p>
-
-      <p>You'll also have an opportunity to add more information after submitting the component.</p>
-
-      <p>There is a word limit for certain answers. This ensures information is understandable for all users. The following information is required.</p>
+      {% if data['flow'] == "existing" %}
+        <p>It's helpful for users to understand how a component is being used and what problem it's solving. This is a requirement when adding more information to a component in the design system.</p>
+        <p>There is a word limit for the answers to information is brief and understandable for all users.</p>
+      {% else %}
+        <p>Specific information is required when submitting a component to the design system. This gives users a basic understanding of the component and how to use it.</p>
+        <p>You'll also have an opportunity to add more information after submitting the component.</p>
+        <p>There is a word limit for certain answers. This ensures information is understandable for all users. The following information is required.</p>
+      {% endif %}
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
       {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
-      {{ govukInput({
-        label: {
-          text: "What is the name of the component?",
-          classes: "govuk-label--m",
-          isPageHeading: false
-        },
-        id: "component-name",
-        name: "component-name",
-        classes: "govuk-input--width-30"
-      }) }}
+      {% if data['flow'] != "existing" %}
+        {{ govukInput({
+          label: {
+            text: "What is the name of the component?",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          },
+          id: "component-name",
+          name: "component-name",
+          classes: "govuk-input--width-30"
+        }) }}
 
-      {{ govukCharacterCount({
-        name: "component-overview",
-        id: "component-overviewt",
-        maxwords: 250,
-        label: {
-          text: "Add an overview description about the component",
-          classes: "govuk-label--m",
-          isPageHeading: false
-        }
-      }) }}
+        {{ govukCharacterCount({
+          name: "component-overview",
+          id: "component-overviewt",
+          maxwords: 250,
+          label: {
+            text: "Add an overview description about the component",
+            classes: "govuk-label--m",
+            isPageHeading: false
+          }
+        }) }}
+      {% endif %}
 
       {{ govukCharacterCount({
         name: "component-how-used",

@@ -3,11 +3,12 @@
 {% block content %}
   <div class="app-layout__content">
     <form action="" method="POST">
-      <span class="govuk-caption-l">Add to an existing component</span>
-      <h1>[accessibility]</h1>
-
-      <p>[findings description]</p>
-
+      {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
+      <h1>Accessibility findings</h1>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -16,10 +17,13 @@
         name: "share-findings",
         fieldset: {
           legend: {
-            text: "Do you have [findings]",
+            text: "Has the component been tested for accessibility purposes?",
             isPageHeading: false,
             classes: "govuk-fieldset__legend--m"
           }
+        },
+        hint: {
+          text: "This can be testing carried out as part of an accessibility audit or the component being reviewed by an accessibility specialist."
         },
         items: [
           {

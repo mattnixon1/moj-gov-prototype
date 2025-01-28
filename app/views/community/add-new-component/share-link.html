@@ -3,7 +3,12 @@
 {% block content %}
   <div class="app-layout__content">
     <form action="" method="POST">
-      <span class="govuk-caption-l">Add to an existing component</span>
+      {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
+      <h1>Prototype URL and link</h1>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -12,7 +17,7 @@
         name: "share-link",
         fieldset: {
           legend: {
-            text: "Do you have a prototype file or link for the component?",
+            text: "Do you have a prototype URL for the component?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--l"
           }

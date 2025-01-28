@@ -3,7 +3,11 @@
 {% block content %}
   <div class="app-layout__content">
     <form action="" method="POST">
-      <span class="govuk-caption-l">Add to an existing component</span>
+      {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
       <h1>Accessibility findings</h1>
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
