@@ -33,7 +33,7 @@
         rows: [
           {
             key: {
-              text: "Name"
+              text: "Component name"
             },
             value: {
               text: data['component-name'] or "default name"
@@ -67,7 +67,7 @@
           },
           {
             key: {
-              text: "How component is used"
+              text: "How component is used in your service"
             },
             value: {
               text: data['component-how-used'] or "default info"
@@ -84,7 +84,7 @@
           },
           {
             key: {
-              text: "What problem did it solve"
+              text: "The problem the component solved"
             },
             value: {
               html: data['component-problem-solved'] or "default info"
@@ -119,7 +119,6 @@
         ]
       }) }}
 
-    {#{% if data['share-findings'] == "yes" %}#}
     <h2 class="govuk-heading-m">Accessibility findings</h2>
 
     {{ govukSummaryList({
@@ -127,7 +126,24 @@
         rows: [
           {
             key: {
-              text: "Accessibility findings"
+              text: "Accessibility tested"
+            },
+            value: {
+              text: data['share-findings'] or "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-findings",
+                  text: "Change",
+                  visuallyHiddenText: "accessibility findings"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Further information"
             },
             value: {
               text: data['add-findings'] or "default findings"
@@ -141,23 +157,21 @@
                 }
               ]
             }
-          }   
+          } if data['share-findings'] == "yes"     
         ]
       }) }}
-    {#{% endif %}#}
 
-    {#{% if data['share-link'] == "yes" %}#}
-    <h2 class="govuk-heading-m">Prototype file and link</h2>
+    <h2 class="govuk-heading-m">Prototype URL</h2>
 
     {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
           {
             key: {
-              text: "Prototype file and link address"
+              text: "Share a link"
             },
             value: {
-              text: data['link-url'] or "default url"
+              text: data['share-link'] or "No"
             },
             actions: {
               items: [
@@ -171,7 +185,24 @@
           },
           {
             key: {
-              text: "Prototype file and link information"
+              text: "Link URL"
+            },
+            value: {
+              text: data['link-url'] or "default url"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-link",
+                  text: "Change",
+                  visuallyHiddenText: "prototype file and links address"
+                }
+              ]
+            }
+          } if data['share-link'] == "yes",
+          {
+            key: {
+              text: "Further information"
             },
             value: {
               text: data['link-info'] or "default info"
@@ -185,12 +216,10 @@
                 }
               ]
             }
-          }   
+          } if data['share-link'] == "yes"   
         ]
       }) }}
-    {#{% endif %}#}
 
-    {#{% if data['share-code'] == "yes" %}#}
     <h2 class="govuk-heading-m">Component code</h2>
 
     {{ govukSummaryList({
@@ -198,10 +227,10 @@
         rows: [
           {
             key: {
-              text: "Code language"
+              text: "Share code"
             },
             value: {
-              text: data['code-language'] or "default language"
+              text: data['share-code'] or "No"
             },
             actions: {
               items: [
@@ -213,6 +242,23 @@
               ]
             }
           },
+          {
+            key: {
+              text: "Code language"
+            },
+            value: {
+              text: data['code-language'] or "HTML"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-code",
+                  text: "Change",
+                  visuallyHiddenText: "component code language"
+                }
+              ]
+            }
+          } if data['add-code'] == "yes",
           {
             key: {
               text: "Code usage"
@@ -229,7 +275,7 @@
                 }
               ]
             }
-          },
+          } if data['add-code'] == "yes",
           {
             key: {
               text: "Code"
@@ -246,12 +292,11 @@
                 }
               ]
             }
-          }   
+          } if data['add-code'] == "yes"
         ]
       }) }}
-    {#{% endif %}#}
 
-    <h2 class="govuk-heading-m">Your details</h2>
+    <h2 class="govuk-heading-m">Additional information</h2>
 
     {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
@@ -261,18 +306,26 @@
               text: "Additional information"
             },
             value: {
-              text: data['additional-info'] or 'default info'
+              text: data['additional-info'] or "Additional information"
             },
             actions: {
               items: [
                 {
                   href: "additional-info",
                   text: "Change",
-                  visuallyHiddenText: "additional information"
+                  visuallyHiddenText: "additional info"
                 }
               ]
             }
-          },
+          }
+        ]
+      }) }}
+
+    <h2 class="govuk-heading-m">Your details</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
           {
             key: {
               text: "Name"

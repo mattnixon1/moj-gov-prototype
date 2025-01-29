@@ -52,8 +52,10 @@ router.post('/community/add-new-component/component-screenshot', (req, res) => {
 
 router.post('/community/add-new-component/component-screenshot', upload.single('component-screenshot'), (req, res) => {
     if (req.file) {
+        const filename = req.file.originalname;
         const base64Image = req.file.buffer.toString('base64');
         req.session.data.base64Image = base64Image;
+        req.session.data['component-screenshot'] = filename;
 
         console.log(base64Image)
         res.redirect('/community/add-new-component/additional-info');
