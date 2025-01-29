@@ -3,7 +3,19 @@
 {% set usingPages = data.usingPages %}
 
 {% from "./../macros/nav-list-item.njk" import verticalNavListItem %}
+<style>
+    <style>
+    .app-vertical-nav__link:focus,
+    .app-vertical-nav__link:focus-visible {
+        border-color: #0b0c0c;
+        outline: none;
+        color: #0b0c0c;
+        background-color: #fd0;
+        box-shadow: none;
+    }
+</style>
 
+    </style>
 <div id="sidebar" class="app-layout__sidebar">
 
     <moj-collapsible-nav open-class="app-vertical-nav__item--open" id="building-nav">
@@ -104,9 +116,11 @@
                             <a class="app-vertical-nav__link" href="/components/sortable-table">Sortable table</a>
                         </li>
 
+                        {% if data['add-component'] == "complete" %}
                         <li class="app-vertical-nav__item   app-vertical-nav__item--with-children">
-                            <a class="app-vertical-nav__link" href="/community-components/spinner">Spinner</a>
+                            <a class="app-vertical-nav__link" href="/components/spinner">Spinner</a>
                         </li>
+                        {% endif %} 
 
                         <li class="app-vertical-nav__item   app-vertical-nav__item--with-children">
                             <a class="app-vertical-nav__link" href="/components/sub-navigation">Sub navigation</a>
@@ -202,7 +216,7 @@
                         </li>
                     </ul>
                 </li>
-
+{#
                 <li class="app-vertical-nav__item app-vertical-nav__item--with-children">
                     <button aria-controls="building-nav-collapsible-nav-3" aria-expanded="false" class="app-vertical-nav__toggle">Community components<div class="app-vertical-nav__indicator">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -211,36 +225,12 @@
                         </div>
                     </button>
                     <ul class="app-vertical-nav__list" hidden="" id="building-nav-collapsible-nav-3">
-
-                        <!--<li class="app-vertical-nav__item   app-vertical-nav__item--with-children">
-                            <a class="app-vertical-nav__link" href="/archive/currency-input/">Currency input</a>
-                        </li>
-
-                        <li class="app-vertical-nav__item   app-vertical-nav__item--with-children">
-                            <a class="app-vertical-nav__link" href="/archive/form-validator/">Form validator</a>
-                        </li>
-
-                        <li class="app-vertical-nav__item   app-vertical-nav__item--with-children">
-                            <a class="app-vertical-nav__link" href="/archive/password-reveal/">Password reveal</a>
-                        </li>
-
-                        <li class="app-vertical-nav__item   app-vertical-nav__item--with-children">
-                            <a class="app-vertical-nav__link" href="/archive/question-pages/">Question page</a>
-                        </li>
-
-                        <li class="app-vertical-nav__item   app-vertical-nav__item--with-children">
-                            <a class="app-vertical-nav__link" href="/archive/rich-text-editor/">Rich text editor</a>
-                        </li>
-
-                        <li class="app-vertical-nav__item   app-vertical-nav__item--with-children">
-                            <a class="app-vertical-nav__link" href="/archive/tag/">Tag</a>
-                        </li>-->
-
                         <li class="app-vertical-nav__item   app-vertical-nav__item--with-children">
                             <a class="app-vertical-nav__link" href="/community-components/spinner">Spinner</a>
                         </li>
                     </ul>
                 </li>
+                #}
             </ul>
         </nav>
     </moj-collapsible-nav>
@@ -415,11 +405,7 @@
 
 <script>
 
-    (function () {
-
-        // this doesn't quite work for all sections, need to rename commmuity to get involved
-
-
+    document.addEventListener("DOMContentLoaded", function () {
         console.log("Example page has loaded!");
         var list = document.getElementsByClassName("app-vertical-nav__item app-vertical-nav__item--with-children");
 
@@ -428,36 +414,55 @@
 
         // get the url for the page, if the page is a sub page then open the menu for that section
         var url = document.location.href;
-        
-        // split up the url and grab the first parameter
-        url = url.split("/")[3].toLowerCase();
+        console.log("Current URL:", url);
 
-        // split up the url and grab the first parameter, replace the - with a space
-        url = url.split("-").join(" ");
+        // split up the url and grab the first and second parameters
+        var urlParts = url.split("/");
+        console.log("URL Parts:", urlParts);
 
-        // cycle through the button list and check if the inner text matches the url and if it does then open the menu
-        for (i = 0; i < buttons.length; i++) {
-            if (buttons[i].innerText.toLowerCase() == url) {
-                buttons[i].parentElement.classList.toggle("app-vertical-nav__item--open");
-                buttons[i].toggleAttribute("aria-expanded");
-                buttons[i].nextElementSibling.toggleAttribute("hidden");
+        if (urlParts.length > 4) {
+            var firstParam = urlParts[3].toLowerCase();
+            var secondParam = urlParts[4].toLowerCase();
+
+            // replace the - with a space
+            firstParam = firstParam.split("-").join(" ");
+            secondParam = secondParam.split("-").join(" ");
+            console.log("First Param:", firstParam);
+            console.log("Second Param:", secondParam);
+
+            // cycle through the button list and check if the inner text matches the first parameter and if it does then open the menu
+            for (var i = 0; i < buttons.length; i++) {
+                console.log("Checking button:", buttons[i].innerText.toLowerCase());
+                if (buttons[i].innerText.toLowerCase() === firstParam) {
+                    console.log("Opening menu for:", firstParam);
+                    buttons[i].parentElement.classList.add("app-vertical-nav__item--open");
+                    buttons[i].setAttribute("aria-expanded", "true");
+                    buttons[i].nextElementSibling.removeAttribute("hidden");
+                }
+            }
+
+            // cycle through the list items and check if the href matches the second parameter and if it does then set it to active
+            var items = document.getElementsByClassName("app-vertical-nav__link");
+            for (var j = 0; j < items.length; j++) {
+                console.log("Checking link:", items[j].href.toLowerCase());
+                var itemHref = items[j].href.toLowerCase().split("/").pop().split("-").join(" ");
+                if (itemHref === secondParam) {
+                    console.log("Setting active for:", secondParam);
+                    items[j].parentElement.classList.add("app-vertical-nav__item--active");
+                }
             }
         }
 
-        for (i = 0; i < list.length; i++) {
+        for (var i = 0; i < list.length; i++) {
             list[i].addEventListener("click", function () {
-                //var element = list[i];
-                console.log(this)
+                console.log(this);
                 console.log("Item clicked!");
                 console.log(this.classList);
                 this.classList.toggle("app-vertical-nav__item--open");
-                //this.firstChild.ariaExpanded !== true;
-                console.log(this.children[0])
+                console.log(this.children[0]);
                 this.children[0].toggleAttribute("aria-expanded");
                 this.children[1].toggleAttribute("hidden");
-
             });
         }
-
-    })();
+    });
 </script>

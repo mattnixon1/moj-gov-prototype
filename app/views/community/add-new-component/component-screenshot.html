@@ -1,6 +1,9 @@
 {% extends "../../layouts/base.html" %}
 
 {% block content %}
+<div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
   <div class="app-layout__content">
     <form action="" method="POST" enctype="multipart/form-data">
       {% if data['flow'] == "existing" %}

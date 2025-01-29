@@ -1,4 +1,4 @@
 {
   "serviceName": "Service name goes here",
-  "useBrowserSync": false
+  "useBrowserSync": true
 }
