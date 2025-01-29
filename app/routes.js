@@ -111,6 +111,7 @@ router.post('/community/add-new-component/user-details', (req, res) => {
 });
 
 router.post('/community/add-new-component/check-your-answers', (req, res) => {
+    req.session.data['add-component'] = "complete";
     res.redirect('/community/add-new-component/confirmation');
 });
 

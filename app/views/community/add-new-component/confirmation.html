@@ -37,7 +37,8 @@
     {{ govukNotificationBanner({
         html: html,
         titleText: "Component information received" if data['flow'] == "existing" else "Component received",
-        type: "success"
+        type: "success",
+        classes: "govuk-!-margin-top-5"
       }) }}
 
     {% from "govuk/components/button/macro.njk" import govukButton %}
