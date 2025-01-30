@@ -129,6 +129,27 @@ router.post('/community/add-new-component/check-your-answers', (req, res) => {
 router.post('/community/add-new-component/component-owner', (req, res) => {
     res.redirect('/community/add-new-component/component-details');
 });
+
+
+// ADD CODE
+
+router.post('/community/add-code/add-code', (req, res) => {
+    res.redirect('/community/add-code/share-more');
+});
+
+router.post('/community/add-code/share-more', (req, res) => {
+    res.redirect('/community/add-code/user-details');
+});
+
+router.post('/community/add-code/user-details', (req, res) => {
+    res.redirect('/community/add-code/check-your-answers');
+});
+
+router.post('/community/add-code/check-your-answers', (req, res) => {
+    res.redirect('/community/add-code/confirmation');
+});
+
+
 /*
 router.post('/community/add-to-existing-component/share-code', (req, res) => {
     if (req.session.data['share-code'] === 'yes') {

@@ -1,0 +1,49 @@
+{% extends "../../layouts/base.html" %}
+
+{% block content %}
+  <div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+  <div class="app-layout__content">
+    <form action="" method="POST">
+      <span class="govuk-caption-l">Add component code</span>
+      <h1>Component details still required</h1>
+
+      <p>This component is still missing:</p>
+        <ul class="govuk-list govuk-list--bullets">
+          <li>links to a prototype</li>
+          <li>accessibility findings</li>
+        </ul>
+      
+      <p>If you have any of the the missing pieces of information then you can add them now or you can always return to this component and add the information at a later date</p>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "share-more",
+        fieldset: {
+          legend: {
+            text: "Can your add any of missing information now?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

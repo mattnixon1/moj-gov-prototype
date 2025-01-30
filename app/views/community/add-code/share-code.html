@@ -1,0 +1,49 @@
+{% extends "../../layouts/base.html" %}
+
+{% block content %}
+<div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+  <div class="app-layout__content">
+    <form action="" method="POST">
+      {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
+      <h1>Component code</h1>
+
+      <p>If sending code, we recommend sending HTML, CSS, SASS, Javascript or Nunjucks as these are common in government.</p>
+
+      <p>You should only send the component code and not the full page of code. This ensures it's easy for others to understand and use. The code should not contain any personal or sensitive information.</p>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "share-code",
+        fieldset: {
+          legend: {
+            text: "Do you have code for the component available?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

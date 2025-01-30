@@ -1,0 +1,85 @@
+{% extends "../../layouts/base.html" %}
+
+{% block content %}
+  <div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+  <div class="app-layout__content">
+    <form action="" method="POST">
+      <span class="govuk-caption-l">Add component code</span>
+      <h1>Your details</h1>
+
+      <p>Providing your personal information means the team can contact you to discuss the component further, if required. The team will also let you when the component goes live in the design system.</p>
+
+      <p>With your permission, your name and email address will be added to the component page to show you added it to the design system.</p>
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukInput({
+        label: {
+          text: "Full name",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "user-name",
+        name: "user-name",
+        classes: "govuk-input--width-20"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Email address",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "user-email",
+        name: "user-email",
+        classes: "govuk-input--width-30"
+      }) }}      
+
+      {{ govukCheckboxes({
+        name: "share-preferences",
+        fieldset: {
+          legend: {
+            text: "Select how you allow us to share your personal details ",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "Select all that apply"
+        },
+        items: [
+          {
+            value: "Add my name and email address to the component page",
+            text: "Add my name and email address to the component page"
+          },
+          {
+            value: "Only share my name and email address when requested by other users",
+            text: "Only share my name and email address when requested by other users"
+          },
+          {
+            divider: "or"
+          },
+          {
+            value: "Do not share my personal details with anyone",
+            text: "Do not share my personal details with anyone",
+            behaviour: "exclusive"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+      {{ govukInsetText({
+        text: "If you do not allow us to share your personal information, this may not represent a 'community component'. This prevents us, and others, getting in touch with you. Meaning it may stop the continuing collaboration of the component."
+      }) }}
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+    </form>
+  </div>
+{% endblock %}
