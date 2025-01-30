@@ -43,7 +43,7 @@
           <a class="moj-sub-navigation__link" id="link-overview" href="#overview" aria-current="page">Overview</a>
         </li>
         <li class="moj-sub-navigation__item">
-          <a class="moj-sub-navigation__link" id="link-code-stuff" href="#code-stuff">Code Stuff</a>
+          <a class="moj-sub-navigation__link" id="link-code-stuff" href="#code-stuff">Code</a>
         </li>
         <li class="moj-sub-navigation__item">
           <a class="moj-sub-navigation__link" id="link-additional-info" href="#additional-info">Additional Info</a>
@@ -55,13 +55,9 @@
     </nav>
 
     <div id="overview" class="content-section">
-      <!-- show the base 64 image in the src attribute -->
 
       <img src="data:image/png;base64,{{ data.base64Image }}" alt="Image of component" style="width: 100%; height: auto; margin-bottom: 30px;">
-      <!--<img src="spinner" alt="Image of component" style="width: 100%; height: auto; margin-bottom: 30px;">
-      <img src="data:image/png;base64,{{ data['base64Image'] }}" alt="Image of component" style="width: 100%; height: auto; margin-bottom: 30px;">-->
-      
-      <!--<p>{{ data['base64Image']}}</p>-->
+
       <h2>Overview</h2>
 
       <p>{{ data['component-overview'] or 'Component overview' }}</p>
@@ -84,13 +80,15 @@
     </div>
 
     <div id="code-stuff" class="content-section" style="display:none;">
-            <!-- CODE STUFF -->
       
-      <h2>Code Stuff</h2>
-      <p>[code stuff]</p>
-      <p><a href="../community/add-code/add-code">Add more code stuff</a></p>
+      <h2>Code</h2>
+      <p>No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.</p>
+
+      <p><a href="../community/add-code/add-code">Contribute code to this component</a></p>
+      {% if data['code-code'] != null %}
       <div>
-        <h3>SASS</h3>
+        <h3>{{ data['code-language'] or "SASS" }}</h3>
+        <p>{{ data['code-usage'] or "[how to use - add more here]" }}</p>
         <div style="border: 1px solid #b1b4b6; background-color: white; padding: 30px; font-family: 'Courier'; margin-bottom: 30px">
 <pre style="background-color: white">
 .app-loading-spinner {
@@ -118,8 +116,8 @@
 </pre>
         </div>
       </div>
+      {% endif %}
 
-      <!-- -->
 
     </div>
 
@@ -128,24 +126,26 @@
 
       <h2>Additional Info</h2>
       <h3>Links</h3>
-      <p>Useful links and resources related to the [component]. Some links may not work anymore or could require specific access. Where possible we try to ensure links are available for all to use.</p>
+      <!--<p>Useful links and resources related to the [component]. Some links may not work anymore or could require specific access. Where possible we try to ensure links are available for all to use.</p>
 
       <p><a href="">Figma files (opens in new tab)</a></p>
       <p>Submitted by Jane Smith on 3rd Aug 2022</p>
 
       <p><a href="">Prototype example (opens in new tab)</a></p>
-      <p>Submitted by Andy Williams on 5th Oct 2021</p>
+      <p>Submitted by Andy Williams on 5th Oct 2021</p>-->
+      <p>No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.</p>
+      <p><a href="../community/add-new-component/component-owner?flow=existing">Have you used this component in your service? Share any protoypes you have.</a></p>
 
       <h3>Things to consider</h3>
 
-      <p>The [component] was tested in the following services:</p>
+      <!--<p>The [component] was tested in the following services:</p>
 
       <p><strong>Service 1 - Internal audit on Sep 2023</strong><p>
       <p>There were issues raised on focus regarding the [component]</p>
 
       <p><strong>Service 2 - DAC audit on Aug 2022</strong><p>
-      <p>DAC found there were issues on screenreaders when a spinner was shown</p>
-
+      <p>DAC found there were issues on screenreaders when a spinner was shown</p>-->
+      <p>No findings have been provided for this component. If you have used this component in your service and had an accessibility review then you can add it here.</p>
       <p><a href="../community/add-new-component/component-owner?flow=existing">Have you used this component in your service? Tell us if you had an accessibility audit or find an issue.</a></p>
       
       <!-- -->
@@ -157,14 +157,18 @@
       <h2>Contribute</h2>
 
       <p>The community provides all documentation and code examples for this component, but we still need help to maintain, update and share your experiences of adding it to your service.</p>
-      <p><a href="../community/add-new-component/component-owner?flow=existing">Tell us know if you've used this component in your service</a></p>
+      <!--<p><a href="../community/add-new-component/component-owner?flow=existing">Tell us know if you've used this component in your service</a></p>-->
 
-      <h2>[missing sections section]</h2>
-      <p>Thank you to everyone who has contributed to this component. We don't have any missing information or sections but that doesn't mean you can't contribute. [We still want you to tell us if you've used this component in your service]</p>
+      <h2>Things we still need</h2>
+      <p>Thank you to everyone who has contributed to this component. We are still looking for:</p>
+        <p><a href="">More code examples</a><br>
+        <a href="">Links to prototypes or Figma files</a><br>
+        <a href="">Things to consider like accessibility reviews</a></p>
 
-      <h2>[history section]</h2>
-      <p>[todo]</p>
 
+      <h2>Component history</h2>
+
+<!--
       <p><strong>Jane Smith</strong> 3rd September 2024</p>
       <p>Added Figma and prototype links</p>
 
@@ -174,11 +178,11 @@
 
       <p><strong>Andy Williams</strong> 28th July 2024</p>
       <p>Added HTML, SASS and Javascript code snippets</p>
-
+-->
       <p><strong>Jane Smith </strong> 28th July 2024</p>
       <p>New component added</p>
 
-      <!-- -->
+
     </div>
 
     <script>
