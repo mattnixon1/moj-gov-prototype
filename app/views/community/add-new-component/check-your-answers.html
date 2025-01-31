@@ -81,7 +81,7 @@
                 }
               ]
             }
-          },
+          } if data['flow'] != "existing",
           {
             key: {
               text: "The problem the component solved"
@@ -98,7 +98,41 @@
                 }
               ]
             }
-          },
+          } if data['flow'] != "existing",
+          {
+            key: {
+              text: "How component is used in your service"
+            },
+            value: {
+              text: data['component-how-used-existing'] or "default info"
+            },
+            actions: {
+              items: [
+                {
+                  href: "component-details",
+                  text: "Change",
+                  visuallyHiddenText: "how the component is being used in your service"
+                }
+              ]
+            }
+          } if data['flow'] == "existing",
+          {
+            key: {
+              text: "The problem the component solved"
+            },
+            value: {
+              html: data['component-problem-solved-existing'] or "default info"
+            },
+            actions: {
+              items: [
+                {
+                  href: "component-details",
+                  text: "Change",
+                  visuallyHiddenText: "what problem the component solved"
+                }
+              ]
+            }
+          } if data['flow'] == "existing",
           {
             key: {
               text: "Supporting file"
