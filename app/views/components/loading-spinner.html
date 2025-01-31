@@ -67,7 +67,7 @@
       <p>{{ data['component-problem-solved'] or "Our service pulls together data from a few different systems to present information about a sentence plan that the user needs to review. In some situations, this means that it may take more than 3 seconds for a page to load whilst it processes and pulls together data onto the page." }}</p>
 
       <p>
-        <a href="../community/add-new-component/component-owner?flow=existing">Have you used this component in your service? Tell us what problem it solved.</a>
+        <a href="../community/add-new-component/component-details?flow=existing">Have you used this component in your service? Tell us what problem it solved.</a>
       </p>
 
       <h2>Current uses for the component</h2>
@@ -81,13 +81,15 @@
     <div id="code-stuff" class="content-section" style="display:none;">
       
       <h2>Code</h2>
+      {% if data['share-code'] != "yes" %}
       <p>No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.</p>
+      {% endif %}
 
       <p><a href="../community/add-code/add-code">Contribute code to this component</a></p>
-      {% if data['code-code'] != null %}
+      {% if data['share-code'] == "yes" %}
       <div>
         <h3>{{ data['code-language'] or "SASS" }}</h3>
-        <p>{{ data['code-usage'] or "[how to use - add more here]" }}</p>
+        <p>{{ data['code-usage'] or "Add the SASS file to your assets folder and include it in your main .SCSS file" }}</p>
         <div style="border: 1px solid #b1b4b6; background-color: white; padding: 30px; font-family: 'Courier'; margin-bottom: 30px">
 <pre style="background-color: white">
 .app-loading-spinner {
