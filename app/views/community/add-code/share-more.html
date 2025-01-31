@@ -7,15 +7,15 @@
   <div class="app-layout__content">
     <form action="" method="POST">
       <span class="govuk-caption-l">Add component code</span>
-      <h1>Component details still required</h1>
+      <h1>Component information still needed</h1>
 
-      <p>This component is still missing:</p>
+      <p>This component still needs the following information:</p>
         <ul class="govuk-list govuk-list--bullets">
-          <li>links to a prototype</li>
+          <li>links to prototypes of the component</li>
           <li>accessibility findings</li>
         </ul>
       
-      <p>If you have any of the the missing pieces of information then you can add them now or you can always return to this component and add the information at a later date</p>
+      <p>You can submit to help update this component by submitting this information if you have it. If you do not have it now, you can return to add this at another time.</p>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -24,7 +24,7 @@
         name: "share-more",
         fieldset: {
           legend: {
-            text: "Can your add any of missing information now?",
+            text: "Do you have any of the missing information available to add now?",
             isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }

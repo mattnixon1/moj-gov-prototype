@@ -15,7 +15,7 @@
 
   <div class="app-layout__content">
     <span class="govuk-caption-l">Community components</span>
-    <h1>{{ data['component-name'] or "Spinner" }}</h1>
+    <h1>{{ data['component-name'] or "Loading Spinner" }}</h1>
 
     <style>
       .moj-sub-navigation__link[aria-current=page]:before {
@@ -49,7 +49,7 @@
           <a class="moj-sub-navigation__link" id="link-additional-info" href="#additional-info">Additional Info</a>
         </li>
         <li class="moj-sub-navigation__item">
-          <a class="moj-sub-navigation__link" id="link-contribution" href="#contribution">Contribution</a>
+          <a class="moj-sub-navigation__link" id="link-contribution" href="#contribution">Add component information</a>
         </li>
       </ul>
     </nav>
@@ -60,23 +60,22 @@
 
       <h2>Overview</h2>
 
-      <p>{{ data['component-overview'] or 'Component overview' }}</p>
+      <p>{{ data['component-overview'] or 'A loading spinner appears when it takes the backend of a service longer than 3 seconds to load information/ changes to a page.' }}</p>
 
       <h2>Why is the component needed</h2>
 
-      <p>{{ data['component-problem-solved'] or "Why is the component needed" }}</p>
+      <p>{{ data['component-problem-solved'] or "Our service pulls together data from a few different systems to present information about a sentence plan that the user needs to review. In some situations, this means that it may take more than 3 seconds for a page to load whilst it processes and pulls together data onto the page." }}</p>
 
       <p>
         <a href="../community/add-new-component/component-owner?flow=existing">Have you used this component in your service? Tell us what problem it solved.</a>
       </p>
 
       <h2>Current uses for the component</h2>
-      <p>{{ data['component-how-used'] or "Current uses for the component" }}</p>
+      <p>{{ data['component-how-used'] or "Research and analytics highlighted that users were concerned when nothing on the screen appeared to tell them a page was loading/processing and would sometimes refresh or abandon the page, causing the processing to either start again or any page changes/ data they had previously entered to disappear. We came up with a loading spinner component to let the user know that the page is loading so they would feel reassured that something was happening in the background. Testing showed a reduction in refreshes and drop offs as a result." }}</p>
       <p>
         <a href="../community/add-new-component/component-owner?flow=existing">Have you used this component in your service? Tell us how you used it.</a>
       </p>
      
-
     </div>
 
     <div id="code-stuff" class="content-section" style="display:none;">
@@ -154,16 +153,16 @@
     <div id="contribution" class="content-section" style="display:none;">
       <!-- CONTRIBUTION STUFF -->
 
-      <h2>Contribute</h2>
+      <h2>Add component information</h2>
 
-      <p>The community provides all documentation and code examples for this component, but we still need help to maintain, update and share your experiences of adding it to your service.</p>
+      <p>This is a community component. That means all information contained within this component was added by the community. There is still information you can submit to help maintain this component.</p>
       <!--<p><a href="../community/add-new-component/component-owner?flow=existing">Tell us know if you've used this component in your service</a></p>-->
 
-      <h2>Things we still need</h2>
-      <p>Thank you to everyone who has contributed to this component. We are still looking for:</p>
-        <p><a href="">More code examples</a><br>
-        <a href="">Links to prototypes or Figma files</a><br>
-        <a href="">Things to consider like accessibility reviews</a></p>
+      <h2>Information still needed</h2>
+      <p>This component still needs the following information:</p>
+        <p><a href="">Additional code examples</a><br>
+        <a href="">Links to prototypes of the component</a><br>
+        <a href="">Accessibility findings</a></p>
 
 
       <h2>Component history</h2>
@@ -182,6 +181,7 @@
       <p><strong>Jane Smith </strong> 28th July 2024</p>
       <p>New component added</p>
 
+      <p>Thank you to everyone who has contributed to this component.</p>
 
     </div>
 
