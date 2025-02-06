@@ -1,0 +1,46 @@
+{% extends "/layouts/base-v3.html" %}
+
+
+{% block content %}
+<div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+  <div class="app-layout__content">
+    <form action="" method="POST">
+      {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
+      <h1>Component details</h1>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "component-owner",
+        fieldset: {
+          legend: {
+            text: "Did you submit the original component to the design system?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

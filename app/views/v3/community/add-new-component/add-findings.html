@@ -1,0 +1,37 @@
+{% extends "/layouts/base-v3.html" %}
+
+
+{% block content %}
+<div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+  <div class="app-layout__content">
+    <form action="" method="POST">
+      {% if data['flow'] == "existing" %}
+        <span class="govuk-caption-l">Add to an existing component</span>
+      {% else %}
+        <span class="govuk-caption-l">Submit new component</span>
+      {% endif %}
+      <h1>Accessibility findings</h1>
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukCharacterCount({
+        name: "add-findings",
+        id: "add-findings",
+        maxwords: 500,
+        label: {
+          text: "Tell us more about how it has been accessibility tested and the findings",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        }
+      }) }}   
+
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

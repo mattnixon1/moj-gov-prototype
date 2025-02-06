@@ -1,6 +1,63 @@
-{% extends "layouts/home-new.html" %}
+{% extends "layouts/main.html" %}
 
 {% block pageTitle %}
   Unbranded page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
 
+  {% block content %}
+    <h1 class="govuk-heading-l">MOJ Design system - Community components</h1>
+    <hr>
+    <h2 class="govuk-heading-m">
+      <a href="v3/index">Community prototype v3</a>
+    </h2>
+    <p>Tested: [date] with [x] users ([roles])</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Tested [to add]</li>
+    </ul>
+    <hr>
+    <h2 class="govuk-heading-m">
+      <a href="v2/index">Community prototype v2</a>
+    </h2>
+    <p>Tested: 4th Feb 2025 with 7 users (content, interaction and developers)</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Tested add new component flow</li>
+      <li>Tested add to existing component reusing the add component flow</li>
+      <li>Tested new home page</li>
+      <li>Tested new tier banner on the components page</li>
+    </ul>
+    <hr>
+
+    <h2 class="govuk-heading-m">Community prototype v1</h2>
+    <p>Tested: 10th Dec 2024 with 8 users (content, interaction and developers)</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Tested component page</li>
+      <li>Tested placement of the community component</li>
+      <li>Tested community guidance pages</li>
+    </ul>
+    <p>This version was created using the moj frontend</p>
+    <hr>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">More info about this prototype</span>
+      </summary>
+      <div class="govuk-details__text">
+        <p>V1 was built using a copy of the MOJ Frontend.</p>
+        
+        <p>For V2 we were adding dynamic pages that was not a feature for the MOJ Frontend so we added MOJ Frontend elements onto the GOV.UK design system.</p>
+        
+        <p>There were quite a number of problems and conflicts getting the side navigation to work which means this isn't as neat as most prototypes.</p>
+
+        <p>Some of the styles were getting overwritten so there are some additional styles both embedded and inline (sorry).</p>
+
+        <p>There were also issues including the MOJ javascript libraries and making them happy with the GOV.UK scripts.</p>
+
+        <p>The side navigation is a working but slightly clunky version compared to the MOJ one, it does work but not as well as the proper one.</p>
+
+        <p>By the time V4 is being worked on there should be a way to pass data around forms on the MOJ Frontend kit so there should be no need to continue on this prototype.</p>
+
+        <p>Should you need to add another version on here there will be a readme file in the main app folder.</p>      
+      </div>
+    </details>
+
+  {% endblock %}
+{% endblock %}

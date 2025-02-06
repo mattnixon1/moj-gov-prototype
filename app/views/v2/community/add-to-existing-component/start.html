@@ -1,0 +1,59 @@
+{% extends "/layouts/base-v2.html" %}
+
+
+{% block content %}
+  <div class="app-layout__content">
+    <span class="govuk-caption-l">Add to an existing component</span>
+    <h1>Add to the Spinner component</h1>
+
+
+
+
+
+
+    <p>All new components submitted to the design system must include the following details:</p>
+
+    <ul class="govuk-list govuk-list--bullets">
+      <li>Component name</li>
+      <li>Overview description of the component</li>
+      <li>How the component is being used in your service</li>
+      <li>What problem the component solved</li>
+      <li>An image file to show what the component looks like</li>
+    </ul>
+
+    <p>This information is required to provide users with a basic understanding of the component and how to use it.</p>
+
+    <h3>Providing your personal information</h3>
+
+    <p>Your personal information is also required. This includes your:</p>
+
+    <ul class="govuk-list govuk-list--bullets">
+      <li>name</li>
+      <li>email address</li>
+      <li>job role</li>
+      <li>team name</li>
+    </ul>
+
+    <p>The team will use this information for only 2 reasons:</p>
+
+    <ul class="govuk-list govuk-list--bullets">
+      <li>To contact you about the component if required for any reason.</li>
+      <li>To include on the component page, with your permission, when publishing the new component live.</li>
+    </ul>
+
+    <h3>Adding further information about the component</h3>
+
+    <p>If you have more than the minimum required information about the component available, you can add this after you've submitted it.</p>
+
+    <p>You will see an option to "Add more information". Select this and you'll be taken to the "Add to an existing component" page where you can add more information.</p>
+
+    <p>The MoJ Design System team will then review this as with all community submissions.</p>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+    <form action="" method="POST">
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

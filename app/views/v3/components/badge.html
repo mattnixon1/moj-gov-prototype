@@ -1,0 +1,197 @@
+{% extends "/layouts/base-v3.html" %}
+
+{% from "../../layouts/macros/card.njk" import card %}
+
+{% block content %}
+  <div class="govuk-phase-banner" style="background-color: white; padding: 10px 10px 0px 10px; margin: 0; position: sticky; top: 0; z-index:100;">
+    <p class="govuk-phase-banner__content" style="margin-bottom: 10px; font-size: 15px">
+      <span class="govuk-tag govuk-phase-banner__content__tag govuk-tag--green" style="max-width: none; white-space: nowrap">
+        Reviewed
+      </span>
+      <span class="govuk-phase-banner__text">
+        Created Aug 2024. <a href="">Learn more about 'reviewed' components</a>.
+      </span>
+    </p>
+  </div>
+  <div class="app-layout__content">
+    <span class="govuk-caption-l">Components</span>
+    <h1>Badge</h1>
+
+    {#
+{% banner "The GOV.UK Design System has a similar component" %}
+The [Tag component](https://design-system.service.gov.uk/components/tag/) in the GOV.UK Design System has a similar function and visual design to this component.
+
+You should consider using the GOV.UK version if it fits your needs.
+{% endbanner %}
+#}
+
+    <div style="background-color: #fff; margin-bottom: 30px">
+      {% include "../examples/badge/index.njk" %}
+    </div>
+
+    <h2>When to use</h2>
+
+    <p>Use the badge component to highlight small details like an urgent case.</p>
+
+    <p>The badge is useful for drawing users attention to particular information. It should be used sparingly because when used a lot it loses its value.</p>
+
+    <p>In HMPPS digital services, you should only use the badge to show risk information.</p>
+
+    <h2>How to use</h2>
+
+    <p>The default, neutral badge is blue. Alternative styles are also available, for example, green and red.</p>
+    {#
+{% example "/examples/badge-complete", 125 %}
+
+{% example "/examples/badge-urgent", 125 %}
+#}
+    <h2>Additional styles</h2>
+
+    <p>There are a number of additional colour styles that can be used:</p>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Class name</th>
+          <th class="govuk-table__header" scope="col">badge</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--purple</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--purple">Lorem ipsum 1</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--bright-purple</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--bright-purple">Lorem ipsum 2</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--red</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--red">Lorem ipsum 3</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--green</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--green">Lorem ipsum 4</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--blue</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--blue">Lorem ipsum 5</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--black</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--black">Lorem ipsum 6</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--grey</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--grey">Lorem ipsum 7</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>With a size modifier</h3>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Class names</th>
+          <th class="govuk-table__header" scope="col">badge</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--purple moj-badge--large</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--purple moj-badge--large">Lorem ipsum 1</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--bright-purple moj-badge--large</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--bright-purple moj-badge--large">Lorem ipsum 2</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--red moj-badge--large</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--red moj-badge--large">Lorem ipsum 3</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--green moj-badge--large</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--green moj-badge--large">Lorem ipsum 4</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--blue moj-badge--large</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--blue moj-badge--large">Lorem ipsum 5</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--black moj-badge--large</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--black moj-badge--large">Lorem ipsum 6</span>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            <code>moj-badge--grey moj-badge--large</code>
+          </td>
+          <td class="govuk-table__cell">
+            <span class="moj-badge moj-badge--grey moj-badge--large">Lorem ipsum 7</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Research</h2>
+
+    <p>This component has been used successfully in the following services:</p>
+
+    <ul class="govuk-list govuk-list--bullets">
+      <li>Claim fees for Crown court defence (Legal Aid Agency)</li>
+      <li>Prisoner Escort Request (His Majesty’s Prison and Probation Service)</li>
+      <li>Professional case manager (His Majesty’s Courts and Tribunals Service)</li>
+    </ul>
+  {% endblock %}

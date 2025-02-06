@@ -1,0 +1,167 @@
+{% extends "/layouts/base-v2.html" %}
+
+{#
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+#}
+
+{% block content %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  <div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+
+  <div class="app-layout__content">
+    <span class="govuk-caption-l">Add component code</span>
+    <h1>Check your answers before submitting component information</h1>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+    <h2 class="govuk-heading-m">Component code</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Code language"
+            },
+            value: {
+              text: data['code-language'] or "HTML"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-code",
+                  text: "Change",
+                  visuallyHiddenText: "component code language"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Code usage"
+            },
+            value: {
+              text: data['code-usage'] or "default usage"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-code",
+                  text: "Change",
+                  visuallyHiddenText: "component code usage"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Code"
+            },
+            value: {
+              text: data['code-code'] or "default code"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-code",
+                  text: "Change",
+                  visuallyHiddenText: "component code"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Share more"
+            },
+            value: {
+              text: data['share-more'] or "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "share-more",
+                  text: "Change",
+                  visuallyHiddenText: "if you want to share more information aobut the component"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    <h2 class="govuk-heading-m">Your details</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data['user-name'] or 'default name'
+            },
+            actions: {
+              items: [
+                {
+                  href: "user-details",
+                  text: "Change",
+                  visuallyHiddenText: "your name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: data['user-email'] or 'default email'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence type"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Share your details"
+            },
+            value: {
+              text: data['share-preferences'] or 'default preferences'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence period"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    <form action="" method="POST">
+      {{ govukButton({
+      text: "Accept and send"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

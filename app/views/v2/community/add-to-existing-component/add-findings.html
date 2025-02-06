@@ -1,0 +1,30 @@
+{% extends "/layouts/base-v2.html" %}
+
+
+{% block content %}
+  <div class="app-layout__content">
+    <form action="" method="POST">
+      <span class="govuk-caption-l">Add to an existing component</span>
+      <h1>Accessibility findings</h1>
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukCharacterCount({
+        name: "wordCount",
+        id: "word-count",
+        maxwords: 500,
+        label: {
+          text: "Tell us more about how it has been accessibility tested and the findings",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        }
+      }) }}   
+
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "./base.njk" %}
+
+{% block content %}
+    <div class="app-layout__content">
+        <h1 class="govuk-heading-xl">
+            {% if not isIndex %}<span class="govuk-caption-xl">Pages</span>{% endif %}
+            {{ title }}
+        </h1>
+        {{ content | safe }}
+
+      {% if isIndex or isArchive %}
+      {% else %}
+        {% include "./partials/get-help-and-contribute.njk" %}
+      {% endif %}
+
+    </div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script>
+    $('[data-module="app-tabs"]').each(function(e, el) {
+      new Tabs($(el));
+    });
+  </script>
+{% endblock %}

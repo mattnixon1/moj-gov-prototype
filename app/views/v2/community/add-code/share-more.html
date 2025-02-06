@@ -1,0 +1,50 @@
+{% extends "/layouts/base-v2.html" %}
+
+
+{% block content %}
+  <div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+  <div class="app-layout__content">
+    <form action="" method="POST">
+      <span class="govuk-caption-l">Add component code</span>
+      <h1>Component information still needed</h1>
+
+      <p>This component still needs the following information:</p>
+        <ul class="govuk-list govuk-list--bullets">
+          <li>links to prototypes of the component</li>
+          <li>accessibility findings</li>
+        </ul>
+      
+      <p>You can submit to help update this component by submitting this information if you have it. If you do not have it now, you can return to add this at another time.</p>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "share-more",
+        fieldset: {
+          legend: {
+            text: "Do you have any of the missing information available to add now?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+{% endblock %}
