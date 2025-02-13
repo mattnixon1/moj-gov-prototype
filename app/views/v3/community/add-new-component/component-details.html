@@ -60,7 +60,7 @@
           isPageHeading: false
         }
       }) }}
-
+{#
       {{ govukCharacterCount({
         name: "component-problem-solved",
         id: "component-problem-solved",
@@ -71,7 +71,7 @@
           isPageHeading: false
         }
       }) }}
-
+#}
       {% else %}
 
       {{ govukCharacterCount({
@@ -85,6 +85,7 @@
         }
       }) }}
 
+{#
       {{ govukCharacterCount({
         name: "component-problem-solved-existing",
         id: "component-problem-solved-existing",
@@ -95,7 +96,7 @@
           isPageHeading: false
         }
       }) }}
-
+#}
       {% endif %}
  
 

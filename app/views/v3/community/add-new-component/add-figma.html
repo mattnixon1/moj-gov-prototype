@@ -12,7 +12,7 @@
       {% else %}
         <span class="govuk-caption-l">Submit new component</span>
       {% endif %}
-      <h1>Prototype URL</h1>
+      <h1>Figma design</h1>
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
       {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
@@ -20,9 +20,12 @@
 
       {{ govukInput({
         label: {
-          text: "Add the URL to where the prototype is saved",
+          text: "Add the link to where the Figma design file is saved",
           classes: "govuk-label--m",
           isPageHeading: false
+        },
+        hint: {
+          text: "Review the sharing permissions for the Figma design file before sending it. Ensure the 'Who has access' and 'What they can do' fields are set so the team can view the file."
         },
         id: "link-url",
         name: "link-url",
@@ -34,10 +37,10 @@
         id: "link-info",
         maxwords: 250,
         hint: {
-          text: "This may be the username and password for the file if it's protected or contextual information"
+          text: "This may be the password for the file if it's protected or the link expiration date if you set one."
         },
         label: {
-          text: "Additional information about the URL (optional)",
+          text: "Additional information about the Figma design file (optional)",
           classes: "govuk-label--m",
           isPageHeading: false
         }

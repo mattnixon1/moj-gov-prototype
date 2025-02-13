@@ -2,7 +2,7 @@
 
 
 {% block content %}
-<div style="padding:0 60px 0 60px">
+  <div style="padding:0 60px 0 60px">
     <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
   </div>
   <div class="app-layout__content">
@@ -12,19 +12,23 @@
       {% else %}
         <span class="govuk-caption-l">Submit new component</span>
       {% endif %}
-      <h1>Component details</h1>
+      <h1>Figma design</h1>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
+  
       {{ govukRadios({
-        name: "component-owner",
+        name: "share-figma",
         fieldset: {
           legend: {
-            text: "Did you submit the original component to the design system?",
-            isPageHeading: false,
+            text: "Do you have a Figma design file for the component?",
+            isPageHeading: true,
             classes: "govuk-fieldset__legend--m"
           }
+        },
+        hint: {
+          text: "This should be the link to the Figma design file where the component can be viewed."
         },
         items: [
           {

@@ -137,19 +137,53 @@ router.post('/v3/community/add-new-component/start', (req, res) => {
 });
 
 router.post('/v3/community/add-new-component/component-details', (req, res) => {
-    res.redirect('/v3/community/add-new-component/share-findings');
+    res.redirect('/v3/community/add-new-component/component-screenshot');
 });
 
 router.post('/v3/community/add-new-component/share-findings', (req, res) => {
-    if (req.session.data['share-findings'] === 'yes') {
-        res.redirect('/v3/community/add-new-component/add-findings');
+    if (req.session.data['share-external-audit'] === 'yes') {
+        res.redirect('/v3/community/add-new-component/add-external-audit');
+    } else if (req.session.data['share-internal-audit'] === 'yes') {
+        res.redirect('/v3/community/add-new-component/add-internal-audit');
+    } else if (req.session.data['share-assistive-tech'] === 'yes') {
+        res.redirect('/v3/community/add-new-component/add-assistive-tech');
     } else {
-        res.redirect('/v3/community/add-new-component/share-link');
+        res.redirect('/v3/community/add-new-component/share-prototype');
     }
 });
 
-router.post('/v3/community/add-new-component/add-findings', (req, res) => {
-    res.redirect('/v3/community/add-new-component/share-link');
+router.post('/v3/community/add-new-component/add-external-audit', (req, res) => {
+    if (req.session.data['share-internal-audit'] === 'yes') {
+        res.redirect('/v3/community/add-new-component/add-internal-audit');
+    } else if (req.session.data['share-assistive-tech'] === 'yes') {
+        res.redirect('/v3/community/add-new-component/add-assistive-tech');
+    } else {
+        res.redirect('/v3/community/add-new-component/share-prototype');
+    }
+});
+
+router.post('/v3/community/add-new-component/add-internal-audit', (req, res) => {
+    if (req.session.data['share-assistive-tech'] === 'yes') {
+        res.redirect('/v3/community/add-new-component/add-assistive-tech');
+    } else {
+        res.redirect('/v3/community/add-new-component/share-prototype');
+    }
+});
+
+router.post('/v3/community/add-new-component/add-assistive-tech', (req, res) => {
+    res.redirect('/v3/community/add-new-component/share-prototype');
+});
+
+router.post('/v3/community/add-new-component/share-prototype', (req, res) => {
+    if (req.session.data['share-prototype'] === 'yes') {
+        res.redirect('/v3/community/add-new-component/add-prototype');
+    } else {
+        res.redirect('/v3/community/add-new-component/share-code');
+    }
+});
+
+router.post('/v3/community/add-new-component/add-prototype', (req, res) => {
+    res.redirect('/v3/community/add-new-component/share-code');
 });
 
 router.post('/v3/community/add-new-component/component-screenshot', upload.single('component-screenshot'), (req, res) => {
@@ -160,9 +194,9 @@ router.post('/v3/community/add-new-component/component-screenshot', upload.singl
         req.session.data['component-screenshot'] = filename;
 
         console.log(base64Image)
-        res.redirect('/v3/community/add-new-component/additional-info');
+        res.redirect('/v3/community/add-new-component/share-findings');
     } else {
-        res.redirect('/v3/community/add-new-component/additional-info');
+        res.redirect('/v3/community/add-new-component/share-findings');
     }
 });
 
@@ -171,13 +205,7 @@ router.get('/spinner', (req, res) => {
     res.render('spinner', { base64Image });
 });
 
-router.post('/v3/community/add-new-component/share-link', (req, res) => {
-    if (req.session.data['share-link'] === 'yes') {
-        res.redirect('/v3/community/add-new-component/add-link');
-    } else {
-        res.redirect('/v3/community/add-new-component/share-code');
-    }
-});
+
 
 router.post('/v3/community/add-new-component/add-link', (req, res) => {
     res.redirect('/v3/community/add-new-component/share-code');
@@ -187,19 +215,27 @@ router.post('/v3/community/add-new-component/share-code', (req, res) => {
     if (req.session.data['share-code'] === 'yes') {
         res.redirect('/v3/community/add-new-component/add-code');
     } else {
-        if (req.session.data['flow'] == 'existing') {
-            res.redirect('/v3/community/add-new-component/additional-info');
-        } else {
-            res.redirect('/v3/community/add-new-component/component-screenshot');
-        }
+        res.redirect('/v3/community/add-new-component/share-figma');
     }
+});
+
+router.post('/v3/community/add-new-component/share-figma', (req, res) => {
+    if (req.session.data['share-figma'] === 'yes') {
+        res.redirect('/v3/community/add-new-component/add-figma');
+    } else {
+        res.redirect('/v3/community/add-new-component/user-details');
+    }
+});
+
+router.post('/v3/community/add-new-component/add-figma', (req, res) => {
+    res.redirect('/v3/community/add-new-component/user-details');
 });
 
 router.post('/v3/community/add-new-component/add-code', (req, res) => {
     if (req.session.data['flow'] == 'existing') {
         res.redirect('/v3/community/add-new-component/additional-info');
     } else {
-        res.redirect('/v3/community/add-new-component/component-screenshot');
+        res.redirect('/v3/community/add-new-component/share-figma');
     }
 });
 

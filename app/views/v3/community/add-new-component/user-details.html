@@ -16,7 +16,7 @@
 
       <p>Providing your personal information means the team can contact you to discuss the component further, if required. The team will also let you when the component goes live in the design system.</p>
 
-      <p>With your permission, your name and email address will be added to the component page to show you added it to the design system.</p>
+      <p>With your permission, your name and team name will be added to the component page to show you added it to the design system.</p>
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
       {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
@@ -44,43 +44,43 @@
         classes: "govuk-input--width-30"
       }) }}      
 
+      {{ govukInput({
+        label: {
+          text: "What team did you work in when creating the component?",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        id: "user-email",
+        name: "user-email",
+        classes: "govuk-input--width-30"
+      }) }} 
+
       {{ govukCheckboxes({
         name: "share-preferences",
         fieldset: {
           legend: {
-            text: "Select how you allow us to share your personal details ",
+            text: "Sharing your contact details on the component page",
             isPageHeading: false,
             classes: "govuk-fieldset__legend--m"
           }
         },
         hint: {
-          text: "Select all that apply"
+          text: "The team asks for your details so other users can contact you or your team to continue collaborating on the component. By opting out of sharing these details, other community users will not be able to chat or work with you about the component. Select all that apply"
         },
         items: [
           {
-            value: "Add my name and email address to the component page",
-            text: "Add my name and email address to the component page"
+            value: "Add my name to the component page",
+            text: "Add my name to the component page"
           },
           {
-            value: "Only share my name and email address when requested by other users",
-            text: "Only share my name and email address when requested by other users"
-          },
-          {
-            divider: "or"
-          },
-          {
-            value: "Do not share my personal details with anyone",
-            text: "Do not share my personal details with anyone",
-            behaviour: "exclusive"
+            value: "Add my team name to the component page",
+            text: "Add my team name to the component page"
           }
         ]
       }) }}
 
       {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
-      {{ govukInsetText({
-        text: "If you do not allow us to share your personal information, this may not represent a 'community component'. This prevents us, and others, getting in touch with you. Meaning it may stop the continuing collaboration of the component."
-      }) }}
 
       {{ govukButton({
       text: "Continue"

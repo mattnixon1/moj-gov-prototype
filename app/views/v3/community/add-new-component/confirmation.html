@@ -1,80 +1,54 @@
 {% extends "/layouts/base-v3.html" %}
 
-{#
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "#"
-  }) }}
-{% endblock %}
-#}
-
 {% block content %}
 
   <div class="app-layout__content">
 
-    {% if data['flow'] == "existing" %}
-        <span class="govuk-caption-l">Add to an existing component</span>
-      {% else %}
-        <span class="govuk-caption-l">Submit new component</span>
-      {% endif %}
+    <span class="govuk-caption-l">Submit new component</span>
+
+    {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
     {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
     {% set html %}
-      {% if data['flow'] == "existing" %}
-        <h3 class="govuk-notification-banner__heading">
-          You've submitted additional component information
-        </h3>
-        <p class="govuk-body">This will be reviewed by the MoJ Design System team and added to the component.</p>
-      {% else %}
         <h3 class="govuk-notification-banner__heading">
           You've submitted a component to the design system
         </h3>
-        <p class="govuk-body">This will be reviewed by the MoJ Design System team.</p>
-      {% endif %}
+        <p class="govuk-body">This will be reviewed by the MoJ Design System Team.</p>
     {% endset %}
 
     {{ govukNotificationBanner({
         html: html,
-        titleText: "Component information received" if data['flow'] == "existing" else "Component received",
+        titleText: "Component received",
         type: "success",
         classes: "govuk-!-margin-top-5"
       }) }}
 
+    <h3>Team review the component</h3>
+
+    <p>The team will review the component. This can take up to 5 working days.</p>
+
+    <p>The review will include the team going through all the supporting information you added to the component. A member of the team will get in touch with you if any questions come up in the review.</p>
+
+    <h3>What happens after the review?</h3>
+
+    <p>If there are no issues or questions and the team does not need to contact you, the component will go into the design system. It will include a "community" tag. This means it is still in the development phase.</p>
+
+    <p>You will receive an email notification when the component is live in the MoJ Design System.</p>
+
+    <h3>Collaborating with other users on the component</h3>
+
+    <p>Other users have the opportunity to add information about the component once it is live in the design system. Your details will be on the component page if you've given permission for this.</p>
+
+    <p>This is part of the community approach the design system team is encouraging throughout the MoJ and wider government communities.</p>
+    
     {% from "govuk/components/button/macro.njk" import govukButton %}
-
-    <h2 class="govuk-heading-l">What happens next</h2>
-
-    {% if data['flow'] == "existing" %}
-      <h3>Design team review the information</h3>
-
-      <p>The team will review the component. This can take up to 5 working days.</p>
-
-      <p>If there are no issues and the team does not need to contact you, this information will be added to the existing component.</p>
-
-      <p>You will receive an email notification when the information has been added to the component.</p>
-    {% else %}
-      <h3>Design team review the component</h3>
-
-      <p>The team will review the component. This can take up to 5 working days.</p>
-
-      <p>If there are no issues and the team does not need to contact you, the component will be added to the design system. It will include a "community" tag. This means it is still in the development phase.</p>
-
-      <p>You will receive an email notification when the component is live in the MoJ Design System.</p>
-
-      <h3>Collaborating with other users on the component</h3>
-
-      <p>Other users have the opportunity to add information about the component once it is live in the design system. If you've given permission, your details will be on the component page. This gives users the opportunity to start a conversation aimed at continuing development of the component.</p>
-
-      <p>This is part of the community approach the design system team is encouraging throughout the MoJ and wider government communities.</p>
-    {% endif %}
-
+    
     <form action="../../index" method="POST">
       {{ govukButton({
       text: "Back to design system homepage"
     }) }}
     </form>
-     
+
   </div>
 {% endblock %}

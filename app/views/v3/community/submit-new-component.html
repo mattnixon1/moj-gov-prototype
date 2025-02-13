@@ -71,7 +71,7 @@
         overflow: hidden;
       }
     </style>
-
+{#
     <aside class="part-navigation-container" role="complementary">
       <nav dclass="gem-c-contents-list govuk-!-margin-bottom-4">
         <h2 class="gem-c-contents-list__title">Contents</h2>
@@ -89,7 +89,7 @@
         </ol>
       </nav>
     </aside>
-
+#}
 
 <h2>Submitting new components</h2>
 
@@ -124,7 +124,7 @@
         Submit new component
       </button>
     </form>
-
+{#
     {% from "govuk/components/pagination/macro.njk" import govukPagination %}
 
     {{ govukPagination({
@@ -137,6 +137,6 @@
         href: "add-to-an-existing-component"
       }
     }) }}
-
+#}
   </div>
 {% endblock %}
