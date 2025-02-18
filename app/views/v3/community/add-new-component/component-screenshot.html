@@ -1,4 +1,4 @@
-{% extends "/layouts/base-v3.html" %}
+{% extends "/layouts/base-v2.html" %}
 
 
 {% block content %}
@@ -18,58 +18,20 @@
 
       <p>You'll also have an opportunity to add more images of this after submitting the component.</p>
 
-      {%- from "govuk/components/file-upload/macro.njk" import govukFileUpload -%}
-{%- from "govuk/components/button/macro.njk" import govukButton -%}
-{%- from "govuk/components/error-summary/macro.njk" import govukErrorSummary -%}
-{%- from "moj/components/multi-file-upload/macro.njk" import mojMultiFileUpload -%}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    {% if errorSummary.items.length %}
-      {{ govukErrorSummary({
-        titleText: 'There is a problem',
-        errorList: errorSummary.items
-      }) }}
-    {% endif %}
-
-    <h1 class="govuk-heading-xl">Upload files</h1>
-
-<mark>UPDATE THE MULTI FILE COMPONENT STYLING</mark>
-    <form action="/components/multi-file-upload/examples/default" method="post" enctype="multipart/form-data">
-      {% set uploadHtml %}
-        {{ govukFileUpload({
-          id: "documents",
-          name: "documents",
-          classes: 'moj-multi-file-upload__input',
-          label: {
-            text: "Upload a file",
-            classes: 'govuk-label--m'
-          },
-          attributes: { multiple: '' },
-          errorMessage: errorMessage
-        }) }}
-
-        {{govukButton({
-          text: 'Upload file',
-          classes: 'govuk-button--secondary moj-multi-file-upload__button'
-        })}}
-      {% endset %}
-
-      {{ mojMultiFileUpload({
-        uploadedFiles: {
-          heading: { text: 'Files added' },
-          items: uploadedFiles
+      {{ govukFileUpload({
+        id: "component-screenshot",
+        name: "component-screenshot",
+        hint: {
+          text: "The selected file must be a JPG, BMP, PNG, TIF or PDF and smaller than 10MB."
         },
-        uploadHtml: uploadHtml
+        label: {
+          text: "Upload a file",
+          classes: "govuk-label--m"
+        }
       }) }}
-
-      {{govukButton({
-        text: 'Continue'
-      })}}
-    </form>
-  </div>
-</div>
 
       {{ govukButton({
       text: "Continue"

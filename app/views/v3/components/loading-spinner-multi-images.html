@@ -1,4 +1,4 @@
-{% extends "/layouts/base-v2.html" %}
+{% extends "/layouts/base-v3.html" %}
 
 {% from "../../layouts/macros/card.njk" import card %}
 
@@ -16,8 +16,8 @@
 
   <div class="app-layout__content">
     <span class="govuk-caption-l">Community components</span>
-    <h1>{{ data['component-name'] or "Loading Spinner" }}</h1>
-    
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-1">{{ data['component-name'] or "Loading Spinner" }}</h1>
+    <p>Created by <strong>Jane Smith in the Probation service: </strong>28th July 2024</p>
 
     <style>
       .moj-sub-navigation__link[aria-current=page]:before {
@@ -34,8 +34,10 @@
         text-decoration: none !important;
       }
 
-      .app-prose-scope a:focus, a:focus, .govuk-link:focus {
-        box-shadow: 0 -2px #ffdd00, 0 2px #0b0c0c
+      .app-prose-scope a:focus,
+      .govuk-link:focus,
+      a:focus {
+        box-shadow: 0 -2px #ffdd00, 0 2px #0b0c0c;
       }
     </style>
 
@@ -57,46 +59,53 @@
     </nav>
 
     <div id="overview" class="content-section">
-
-      <img src="data:image/png;base64,{{ data.base64Image }}" alt="Image of component" style="width: 100%; height: auto; margin-bottom: 30px;">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <img src="/public/images/loading-spinner.png" alt="Image 1 of component" style="width: 100%; height: auto; margin-bottom: 30px;">
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <img src="/public/images/loading-spinner.png" alt="Image 2 of component" style="width: 100%; height: auto; margin-bottom: 30px;">
+        </div>
+      </div>
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          <img src="/public/images/loading-spinner.png" alt="Image 3 of component" style="width: 100%; height: auto; margin-bottom: 30px;">
+        </div>
+        <div class="govuk-grid-column-one-half">
+          <img src="/public/images/loading-spinner.png" alt="Image 4 of component" style="width: 100%; height: auto; margin-bottom: 30px;">
+        </div>
+      </div>
 
       <h2>Overview</h2>
 
       <p>{{ data['component-overview'] or 'A loading spinner appears when it takes the backend of a service longer than 3 seconds to load information/ changes to a page.' }}</p>
 
-      <h2>Why is the component needed</h2>
-
-      <p>{{ data['component-problem-solved'] or "Our service pulls together data from a few different systems to present information about a sentence plan that the user needs to review. In some situations, this means that it may take more than 3 seconds for a page to load whilst it processes and pulls together data onto the page." }}</p>
-      
-      <p>{{ data['component-problem-solved-existing'] }}</p>
-      <p>
-        <a href="../community/add-new-component/component-details?flow=existing">Have you used this component in your service? Tell us what problem it solved.</a>
-      </p>
-
-      <h2>Current uses for the component</h2>
+      <h2>How the component is used currently</h2>
       <p>{{ data['component-how-used'] or "Research and analytics highlighted that users were concerned when nothing on the screen appeared to tell them a page was loading/processing and would sometimes refresh or abandon the page, causing the processing to either start again or any page changes/ data they had previously entered to disappear. We came up with a loading spinner component to let the user know that the page is loading so they would feel reassured that something was happening in the background. Testing showed a reduction in refreshes and drop offs as a result." }}</p>
-      
+
       <p>{{ data['component-how-used-existing'] }}</p>
       <p>
         <a href="../community/add-new-component/component-details?flow=existing">Have you used this component in your service? Tell us how you used it.</a>
       </p>
-     
+
     </div>
 
     <div id="code-stuff" class="content-section" style="display:none;">
-      
+
       <h2>Code</h2>
       {% if data['share-code'] != "yes" %}
-      <p>No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.</p>
+        <p>No code has been contributed for this component. If you have examples of how you have used this component in your service then you could help the community. Most users are looking for HTML, Nunjucks, Javascript and CSS or SASS.</p>
       {% endif %}
 
-      <p><a href="../community/add-new-component/component-details?flow=existing">Contribute code to this component</a></p>
+      <p>
+        <a href="../community/add-new-component/component-details?flow=existing">Contribute code to this component</a>
+      </p>
       {% if data['share-code'] == "yes" %}
-      <div>
-        <h3>{{ data['code-language'] or "SASS" }}</h3>
-        <p>{{ data['code-usage'] or "Add the SASS file to your assets folder and include it in your main .SCSS file" }}</p>
-        <div style="border: 1px solid #b1b4b6; background-color: white; padding: 30px; font-family: 'Courier'; margin-bottom: 30px">
-<pre style="background-color: white">
+        <div>
+          <h3>{{ data['code-language'] or "SASS" }}</h3>
+          <p>{{ data['code-usage'] or "Add the SASS file to your assets folder and include it in your main .SCSS file" }}</p>
+          <div style="border: 1px solid #b1b4b6; background-color: white; padding: 30px; font-family: 'Courier'; margin-bottom: 30px">
+            <pre style="background-color: white">
 .app-loading-spinner {
  &__spinner{
    border: 12px solid #DEE0E2;
@@ -120,10 +129,9 @@
   100% { transform: rotate(360deg); }
 }
 </pre>
+          </div>
         </div>
-      </div>
       {% endif %}
-
 
     </div>
 
@@ -140,7 +148,9 @@
       <p><a href="">Prototype example (opens in new tab)</a></p>
       <p>Submitted by Andy Williams on 5th Oct 2021</p>-->
       <p>No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.</p>
-      <p><a href="../community/add-new-component/component-details?flow=existing">Have you used this component in your service? Share any protoypes you have.</a></p>
+      <p>
+        <a href="../community/add-new-component/component-details?flow=existing">Have you used this component in your service? Share any protoypes you have.</a>
+      </p>
 
       <h3>Things to consider</h3>
 
@@ -152,8 +162,10 @@
       <p><strong>Service 2 - DAC audit on Aug 2022</strong><p>
       <p>DAC found there were issues on screenreaders when a spinner was shown</p>-->
       <p>No findings have been provided for this component. If you have used this component in your service and had an accessibility review then you can add it here.</p>
-      <p><a href="../community/add-new-component/component-details?flow=existing">Have you used this component in your service? Tell us if you had an accessibility audit or find an issue.</a></p>
-      
+      <p>
+        <a href="../community/add-new-component/component-details?flow=existing">Have you used this component in your service? Tell us if you had an accessibility audit or find an issue.</a>
+      </p>
+
       <!-- -->
     </div>
 
@@ -167,14 +179,15 @@
 
       <h2>Information still needed</h2>
       <p>This component still needs the following information:</p>
-        <p><a href="../community/add-new-component/component-details?flow=existing">Additional code examples</a><br>
+      <p>
+        <a href="../community/add-new-component/component-details?flow=existing">Additional code examples</a><br>
         <a href="../community/add-new-component/component-details?flow=existing">Links to prototypes of the component</a><br>
-        <a href="../community/add-new-component/component-details?flow=existing">Accessibility findings</a></p>
-
+        <a href="../community/add-new-component/component-details?flow=existing">Accessibility findings</a>
+      </p>
 
       <h2>Component history</h2>
 
-<!--
+      <!--
       <p><strong>Jane Smith</strong> 3rd September 2024</p>
       <p>Added Figma and prototype links</p>
 
@@ -185,7 +198,8 @@
       <p><strong>Andy Williams</strong> 28th July 2024</p>
       <p>Added HTML, SASS and Javascript code snippets</p>
 -->
-      <p><strong>Jane Smith </strong> 28th July 2024</p>
+      <p>
+        <strong>Jane Smith </strong> 28th July 2024</p>
       <p>New component added</p>
 
       <p>Thank you to everyone who has contributed to this component.</p>

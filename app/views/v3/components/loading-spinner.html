@@ -16,7 +16,8 @@
 
   <div class="app-layout__content">
     <span class="govuk-caption-l">Community components</span>
-    <h1>{{ data['component-name'] or "Loading Spinner" }}</h1>
+    <h1 class="govuk-heading-l govuk-!-margin-bottom-1">{{ data['component-name'] or "Loading Spinner" }}</h1>
+    <p>Created by <strong>Jane Smith in the Probation service: </strong>28th July 2024</p>
 
     <style>
       .moj-sub-navigation__link[aria-current=page]:before {
@@ -63,16 +64,7 @@
 
       <p>{{ data['component-overview'] or 'A loading spinner appears when it takes the backend of a service longer than 3 seconds to load information/ changes to a page.' }}</p>
 
-      <h2>Why is the component needed</h2>
-
-      <p>{{ data['component-problem-solved'] or "Our service pulls together data from a few different systems to present information about a sentence plan that the user needs to review. In some situations, this means that it may take more than 3 seconds for a page to load whilst it processes and pulls together data onto the page." }}</p>
-      
-      <p>{{ data['component-problem-solved-existing'] }}</p>
-      <p>
-        <a href="../community/add-new-component/component-details?flow=existing">Have you used this component in your service? Tell us what problem it solved.</a>
-      </p>
-
-      <h2>Current uses for the component</h2>
+      <h2>How the component is used currently</h2>
       <p>{{ data['component-how-used'] or "Research and analytics highlighted that users were concerned when nothing on the screen appeared to tell them a page was loading/processing and would sometimes refresh or abandon the page, causing the processing to either start again or any page changes/ data they had previously entered to disappear. We came up with a loading spinner component to let the user know that the page is loading so they would feel reassured that something was happening in the background. Testing showed a reduction in refreshes and drop offs as a result." }}</p>
       
       <p>{{ data['component-how-used-existing'] }}</p>
