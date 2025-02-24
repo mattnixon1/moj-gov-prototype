@@ -16,7 +16,7 @@
 
       <p>You also need to upload an image showing what the component looks like. It should not contain any personal or sensitive information.</p>
 
-      <p>You'll also have an opportunity to add more images of this after submitting the component.</p>
+      <p>You'll also have an opportunity to add more images of the component after submitting it.</p>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
       {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
@@ -33,9 +33,16 @@
         }
       }) }}
 
-      {{ govukButton({
-      text: "Continue"
-    }) }}
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Add another file",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
     </form>
   </div>
 {% endblock %}

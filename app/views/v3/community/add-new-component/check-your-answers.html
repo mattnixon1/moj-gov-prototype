@@ -37,7 +37,7 @@
               text: "Component name"
             },
             value: {
-              text: data['component-name'] or "default name"
+              text: data['component-name'] or "Loading spinner"
             },
             actions: {
               items: [
@@ -48,13 +48,13 @@
                 }
               ]
             }
-          } if data['flow'] != "existing",
+          },
           {
             key: {
-              text: "Description"
+              text: "Overview description"
             },
             value: {
-              text: data['component-overview'] or "something else"
+              text: data['component-overview'] or "When the page requires information and the user needs to wait for a process to finish then a loading spinner is displayed. This is to show the user that the page is still working and not frozen."
             },
             actions: {
               items: [
@@ -65,13 +65,13 @@
                 }
               ]
             }
-          } if data['flow'] != "existing",
+          },
           {
             key: {
-              text: "How component is used in your service"
+              text: "How the component is being used in your service"
             },
             value: {
-              text: data['component-how-used'] or "default info"
+              text: data['component-how-used'] or "There was a need because sometimes user have to wait was sometimes up to 15 seconds due to the amount of data."
             },
             actions: {
               items: [
@@ -82,64 +82,13 @@
                 }
               ]
             }
-          } if data['flow'] != "existing",
-          {
-            key: {
-              text: "The problem the component solved"
-            },
-            value: {
-              html: data['component-problem-solved'] or "default info"
-            },
-            actions: {
-              items: [
-                {
-                  href: "component-details",
-                  text: "Change",
-                  visuallyHiddenText: "what problem the component solved"
-                }
-              ]
-            }
-          } if data['flow'] != "existing",
-          {
-            key: {
-              text: "How component is used in your service"
-            },
-            value: {
-              text: data['component-how-used-existing'] or "default info"
-            },
-            actions: {
-              items: [
-                {
-                  href: "component-details",
-                  text: "Change",
-                  visuallyHiddenText: "how the component is being used in your service"
-                }
-              ]
-            }
-          } if data['flow'] == "existing",
-          {
-            key: {
-              text: "The problem the component solved"
-            },
-            value: {
-              html: data['component-problem-solved-existing'] or "default info"
-            },
-            actions: {
-              items: [
-                {
-                  href: "component-details",
-                  text: "Change",
-                  visuallyHiddenText: "what problem the component solved"
-                }
-              ]
-            }
-          } if data['flow'] == "existing",
+          },
           {
             key: {
               text: "Supporting file"
             },
             value: {
-              html: data['component-screenshot'] or "temp file"
+              html: data['component-screenshot'] or "loading-spinner.png"
             },
             actions: {
               items: [
@@ -150,21 +99,21 @@
                 }
               ]
             }
-          } if data['flow'] != "existing"
+          }
         ]
       }) }}
 
-    <h2 class="govuk-heading-m">Accessibility findings</h2>
+    <h2 class="govuk-heading-m">External accessibility audit</h2>
 
     {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
           {
             key: {
-              text: "Accessibility tested"
+              text: "External accessibility audit supplier"
             },
             value: {
-              text: data['share-findings'] or "No"
+              text: data['share-external-audit-supplier'] or "DAC"
             },
             actions: {
               items: [
@@ -178,10 +127,10 @@
           },
           {
             key: {
-              text: "Further information"
+              text: "Audit date"
             },
             value: {
-              text: data['add-findings'] or "default findings"
+              text: data['share-external-audit-date'] or "11 March 2024"
             },
             actions: {
               items: [
@@ -192,21 +141,190 @@
                 }
               ]
             }
-          } if data['share-findings'] == "yes"     
+          },
+          {
+            key: {
+              text: "Audit report"
+            },
+            value: {
+              text: data['share-external-audit-report'] or "dac-report-2024.pdf"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-findings",
+                  text: "Change",
+                  visuallyHiddenText: "accessibility findings"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Issues found during the audit"
+            },
+            value: {
+              text: data['share-external-audit-findings'] or "The DAC report brought back several issues with the zoom function on devices."
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-findings",
+                  text: "Change",
+                  visuallyHiddenText: "accessibility findings"
+                }
+              ]
+            }
+          } 
         ]
       }) }}
 
-    <h2 class="govuk-heading-m">Prototype URL</h2>
+      <h2 class="govuk-heading-m">Internal accessibility audit</h2>
+
+      {{ govukSummaryList({
+          classes: "govuk-!-margin-bottom-9",
+          rows: [
+            {
+              key: {
+                text: "Internal accessibility audit team"
+              },
+              value: {
+                text: data['share-external-audit-supplier'] or "MOJ Accessibility team"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Audit date"
+              },
+              value: {
+                text: data['share-external-audit-date'] or "20 December 2023"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Audit report"
+              },
+              value: {
+                text: data['share-external-audit-report'] or "moj-audit-dec-23.pdf"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Issues found during the audit"
+              },
+              value: {
+                text: data['share-external-audit-report'] or "Was tested with the MOJ internal team before assessment. Found similar relating to users where they needed to use the zoom in feature."
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            } 
+          ]
+        }) }}
+
+    <h2 class="govuk-heading-m">Testing with assistive technology</h2>
+
+      {{ govukSummaryList({
+          classes: "govuk-!-margin-bottom-9",
+          rows: [
+            {
+              key: {
+                text: "Testing date"
+              },
+              value: {
+                text: data['share-external-audit-date'] or "5 September 2023"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Issues found during the audit"
+              },
+              value: {
+                text: data['share-external-audit-report'] or "The DAC report brought back several issues with the zoom function on devices."
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "testing report"
+              },
+              value: {
+                text: data['share-external-audit-report'] or "ur-testing-september-23.pdf"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+    <h2 class="govuk-heading-m">Prototype designs</h2>
 
     {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
           {
             key: {
-              text: "Share a link"
+              text: "Prototype link"
             },
             value: {
-              text: data['share-link'] or "No"
+              text: data['share-link'] or "http://testinglink-gov-prototype.com/v5"
             },
             actions: {
               items: [
@@ -220,27 +338,10 @@
           },
           {
             key: {
-              text: "Link URL"
+              text: "Additional information"
             },
             value: {
-              text: data['link-url'] or "default url"
-            },
-            actions: {
-              items: [
-                {
-                  href: "add-link",
-                  text: "Change",
-                  visuallyHiddenText: "prototype file and links address"
-                }
-              ]
-            }
-          } if data['share-link'] == "yes",
-          {
-            key: {
-              text: "Further information"
-            },
-            value: {
-              text: data['link-info'] or "default info"
+              text: data['link-info'] or "GOV.UK prototype of the spinner being used in the [insert service]. The prototype password is [password] and the link supplied is a direct link to the version where we tested the spinner."
             },
             actions: {
               items: [
@@ -251,7 +352,7 @@
                 }
               ]
             }
-          } if data['share-link'] == "yes"   
+          }  
         ]
       }) }}
 
@@ -260,23 +361,6 @@
     {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
-          {
-            key: {
-              text: "Share code"
-            },
-            value: {
-              text: data['share-code'] or "No"
-            },
-            actions: {
-              items: [
-                {
-                  href: "add-code",
-                  text: "Change",
-                  visuallyHiddenText: "component code language"
-                }
-              ]
-            }
-          },
           {
             key: {
               text: "Code language"
@@ -293,13 +377,13 @@
                 }
               ]
             }
-          } if data['share-code'] == "yes",
+          },
           {
             key: {
               text: "Code usage"
             },
             value: {
-              text: data['code-usage'] or "default usage"
+              text: data['code-usage'] or "Add this code to your main application.scss file or embed on page if used once."
             },
             actions: {
               items: [
@@ -310,13 +394,34 @@
                 }
               ]
             }
-          } if data['share-code'] == "yes",
+          },
           {
             key: {
               text: "Code"
             },
             value: {
-              text: data['code-code'] or "default code"
+              text: data['code-code'] or '.app-loading-spinner {
+  &__spinner{
+    border: 12px solid #DEE0E2;
+    border-radius: 50%;
+    border-top-color: #005EA5;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin-bottom: 1.5em;
+  }
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}'
             },
             actions: {
               items: [
@@ -327,32 +432,49 @@
                 }
               ]
             }
-          } if data['share-code'] == "yes"
+          }
         ]
       }) }}
 
-    <h2 class="govuk-heading-m">Additional information</h2>
+      <h2 class="govuk-heading-m">Figma designs</h2>
 
     {{ govukSummaryList({
         classes: "govuk-!-margin-bottom-9",
         rows: [
           {
             key: {
-              text: "Additional information"
+              text: "Prototype link"
             },
             value: {
-              text: data['additional-info'] or "Additional information"
+              text: data['share-link'] or "http://figma.com/moj-components"
             },
             actions: {
               items: [
                 {
-                  href: "additional-info",
+                  href: "add-link",
                   text: "Change",
-                  visuallyHiddenText: "additional info"
+                  visuallyHiddenText: "prototype file and links address"
                 }
               ]
             }
-          }
+          },
+          {
+            key: {
+              text: "Additional information"
+            },
+            value: {
+              text: data['link-info'] or "Figma file containing the spinner component. There are other variations as well as some in context examples that were taken to an accessibility audit."
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-link",
+                  text: "Change",
+                  visuallyHiddenText: "prototype file and links information"
+                }
+              ]
+            }
+          }  
         ]
       }) }}
 
@@ -366,7 +488,7 @@
               text: "Name"
             },
             value: {
-              text: data['user-name'] or 'default name'
+              text: data['user-name'] or 'Jayne Williams'
             },
             actions: {
               items: [
@@ -383,7 +505,7 @@
               text: "Email address"
             },
             value: {
-              text: data['user-email'] or 'default email'
+              text: data['user-email'] or 'jwilliams@justive.digital.gov.uk'
             },
             actions: {
               items: [
@@ -397,10 +519,10 @@
           },
           {
             key: {
-              text: "Share your details"
+              text: "Share your details on the component page"
             },
             value: {
-              text: data['share-preferences'] or 'default preferences'
+              text: data['share-preferences'] or 'Add my name and team name to the component page'
             },
             actions: {
               items: [
