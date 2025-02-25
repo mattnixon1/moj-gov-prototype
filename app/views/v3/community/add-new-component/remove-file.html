@@ -1,0 +1,57 @@
+{% extends "/layouts/base-v3.html" %}
+
+
+{% block content %}
+<div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+  <div class="app-layout__content">
+    <form action="" method="POST">
+      <span class="govuk-caption-l">Submit new component</span>
+      <h1>Are you sure you want to remove [type]?</h1>
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+      <h2 class="govuk-heading-m">[type] details</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Link"
+            },
+            value: {
+              text: "http://gov.uk/link"
+            }
+          },
+          {
+            key: {
+              text: "Additional info"
+            },
+            value: {
+              text: "GOV.UK prototype of the spinner being used in the [insert service]. The prototype password is [password] and the link supplied is a direct link to the version where we tested the spinner."
+            }
+          }
+        ]
+      }) }}
+
+      
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Delete [type]",
+          classes: "govuk-button--warning"
+        }) }}
+
+        {{ govukButton({
+          text: "Cancel",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
+
+    </form>
+  </div>
+{% endblock %}
