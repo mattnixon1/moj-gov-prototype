@@ -12,6 +12,12 @@
 {% block content %}
   {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 
+  <style>
+    .app-prose-scope ul {
+      padding:0;
+    }
+  </style>
+
   <div style="padding:0 60px 0 60px">
     <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
   </div>
@@ -94,7 +100,12 @@
               items: [
                 {
                   href: "remove-file",
-                  text: "Add",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                },
+                {
+                  href: "remove-file",
+                  text: "Change",
                   visuallyHiddenText: "the image of the component"
                 }
               ]
@@ -117,6 +128,11 @@
             },
             actions: {
               items: [
+                {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                },
                 {
                   href: "add-findings",
                   text: "Change",
@@ -194,6 +210,11 @@
               actions: {
                 items: [
                   {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                  },
+                  {
                     href: "add-findings",
                     text: "Change",
                     visuallyHiddenText: "accessibility findings"
@@ -270,6 +291,11 @@
               actions: {
                 items: [
                   {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                  },
+                  {
                     href: "add-findings",
                     text: "Change",
                     visuallyHiddenText: "accessibility findings"
@@ -329,6 +355,11 @@
             actions: {
               items: [
                 {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                },
+                {
                   href: "add-link",
                   text: "Change",
                   visuallyHiddenText: "prototype file and links address"
@@ -370,6 +401,11 @@
             },
             actions: {
               items: [
+                {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                },
                 {
                   href: "add-code",
                   text: "Change",
@@ -450,6 +486,11 @@
             },
             actions: {
               items: [
+                {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                },
                 {
                   href: "add-link",
                   text: "Change",
