@@ -1,0 +1,308 @@
+{% extends "/layouts/base-v3.html" %}
+
+{#
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+#}
+
+{% block content %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  <style>
+    .app-prose-scope ul {
+      padding:0;
+    }
+  </style>
+
+  <div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+
+  <div class="app-layout__content">
+    <span class="govuk-caption-l">Add to an existing component</span>
+    <h1>Check your answers before submitting the component</h1>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+
+    <h2 class="govuk-heading-m">External accessibility audit</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "External accessibility audit supplier"
+            },
+            value: {
+              text: data['share-external-audit-supplier'] or "DAC"
+            },
+            actions: {
+              items: [
+                {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                },
+                {
+                  href: "add-findings",
+                  text: "Change",
+                  visuallyHiddenText: "accessibility findings"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Audit date"
+            },
+            value: {
+              text: data['share-external-audit-date'] or "11 March 2024"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-findings",
+                  text: "Change",
+                  visuallyHiddenText: "accessibility findings"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Audit report"
+            },
+            value: {
+              text: data['share-external-audit-report'] or "dac-report-2024.pdf"
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-findings",
+                  text: "Change",
+                  visuallyHiddenText: "accessibility findings"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Issues found during the audit"
+            },
+            value: {
+              text: data['share-external-audit-findings'] or "The DAC report brought back several issues with the zoom function on devices."
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-findings",
+                  text: "Change",
+                  visuallyHiddenText: "accessibility findings"
+                }
+              ]
+            }
+          } 
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Internal accessibility audit</h2>
+
+      {{ govukSummaryList({
+          classes: "govuk-!-margin-bottom-9",
+          rows: [
+            {
+              key: {
+                text: "Internal accessibility audit team"
+              },
+              value: {
+                text: data['share-external-audit-supplier'] or "MOJ Accessibility team"
+              },
+              actions: {
+                items: [
+                  {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                  },
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Audit date"
+              },
+              value: {
+                text: data['share-external-audit-date'] or "20 December 2023"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Audit report"
+              },
+              value: {
+                text: data['share-external-audit-report'] or "moj-audit-dec-23.pdf"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Issues found during the audit"
+              },
+              value: {
+                text: data['share-external-audit-report'] or "Was tested with the MOJ internal team before assessment. Found similar relating to users where they needed to use the zoom in feature."
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            } 
+          ]
+        }) }}
+
+    <h2 class="govuk-heading-m">Testing with assistive technology</h2>
+
+      {{ govukSummaryList({
+          classes: "govuk-!-margin-bottom-9",
+          rows: [
+            {
+              key: {
+                text: "Testing date"
+              },
+              value: {
+                text: data['share-external-audit-date'] or "5 September 2023"
+              },
+              actions: {
+                items: [
+                  {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                  },
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "Issues found during the audit"
+              },
+              value: {
+                text: data['share-external-audit-report'] or "The DAC report brought back several issues with the zoom function on devices."
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            },
+            {
+              key: {
+                text: "testing report"
+              },
+              value: {
+                text: data['share-external-audit-report'] or "ur-testing-september-23.pdf"
+              },
+              actions: {
+                items: [
+                  {
+                    href: "add-findings",
+                    text: "Change",
+                    visuallyHiddenText: "accessibility findings"
+                  }
+                ]
+              }
+            }
+          ]
+        }) }}
+
+   
+    <h2 class="govuk-heading-m">Your details</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data['user-name'] or 'Jayne Williams'
+            },
+            actions: {
+              items: [
+                {
+                  href: "user-details",
+                  text: "Change",
+                  visuallyHiddenText: "your name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: data['user-email'] or 'jwilliams@justive.digital.gov.uk'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence type"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    <form action="" method="POST">
+      {{ govukButton({
+      text: "Accept and send"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

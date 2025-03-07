@@ -1,0 +1,42 @@
+{% extends "/layouts/base-v3.html" %}
+
+
+{% block content %}
+<div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+  <div class="app-layout__content">
+    <form action="" method="POST">
+        <span class="govuk-caption-l">Add to an existing component</span>
+     
+      <h1>Component details</h1>
+
+        <p>It's helpful for users to understand how a component is being used and what problem it's solving. This is a requirement when adding more information to a component in the design system.</p>
+        <p>There is a word limit for the answers to information is brief and understandable for all users.</p>
+      
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    
+      {{ govukCharacterCount({
+        name: "component-how-used-existing",
+        id: "component-how-used-existing",
+        maxwords: 250,
+        label: {
+          text: "How is the component being used in your service?",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        }
+      }) }}
+
+
+   
+
+      {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

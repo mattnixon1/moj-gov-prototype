@@ -3,18 +3,7 @@
 {% from "../../layouts/macros/card.njk" import card %}
 
 {% block content %}
-{#
-  <div class="govuk-phase-banner" style="background-color: white; padding: 10px 10px 0px 10px; margin: 0; position: sticky; top: 0; z-index:100;">
-    <p class="govuk-phase-banner__content" style="margin-bottom: 10px; font-size: 15px">
-      <span class="govuk-tag govuk-phase-banner__content__tag" style="max-width: none; white-space: nowrap">
-        Community component
-      </span>
-      <span class="govuk-phase-banner__text">
-        Added Mar 2025. For use in alpha and beta phases. <a href="../community/collaborate-with-the-community">How to use a community component</a>.
-      </span>
-    </p>
-  </div>
-#}
+
   <div class="app-layout__content">
     <span class="govuk-caption-l">Community components</span>
     <h1 class="govuk-heading-l govuk-!-margin-bottom-1">{{ data['component-name'] or "Loading Spinner" }}</h1>
@@ -71,7 +60,7 @@
       
       <p>{{ data['component-how-used-existing'] }}</p>
       <p>
-        <a href="../community/add-new-component/component-details?flow=existing">Have you used this component in your service? Tell us how you used it.</a>
+        <a href="../community/add-component-usage/component-details">Have you used this component in your service? Tell us how you used it.</a>
       </p>
      
     </div>
@@ -89,7 +78,7 @@
         <li>add your comments, information and resources about the building block</li>
       </ul>
 
-      <p><a href="">Go to the Loading Spinner GitHub conversation</a></p>
+      <p><a href="../community/add-code/add-code">Go to the Loading Spinner GitHub conversation</a></p>
 
       <h2>Code</h2>
 
@@ -140,7 +129,7 @@
       {% if data['share-findings'] != "yes" %}
 
       <p>No accessibility findings have been contributed for this component.</p>
-      <p><a href="">Add accessibility findings</a></p>
+      <p><a href="../community/add-findings/share-findings">Add accessibility findings</a></p>
 
       {% else %}
 
@@ -180,13 +169,13 @@
       
         <p>No links have been provided for this component. If you have used this component in your service and you have a prototype you can share it here.</p>
 
-        <p><a href="">Have you used this component in your service? Share any prototypes you have.</a></p>
+        <p><a href="../community/add-designs/share-designs">Have you used this component in your service? Share any prototypes you have.</a></p>
 
       {% else %}
 
         <p>Useful links and resources related to the [component]. Some links may not work anymore or could require specific access. Where possible we try to ensure submitted links are available for all to use.</p>
 
-        <p><a href="">Have you used this component in your service? Share any prototypes you have</a>.</p>
+        <p><a href="../community/add-designs/share-designs">Have you used this component in your service? Share any prototypes you have</a>.</p>
 
         <h3>Figma links</h3>
 

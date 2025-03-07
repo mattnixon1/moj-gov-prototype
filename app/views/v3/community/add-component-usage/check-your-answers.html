@@ -1,0 +1,105 @@
+{% extends "/layouts/base-v3.html" %}
+
+{#
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+#}
+
+{% block content %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  <style>
+    .app-prose-scope ul {
+      padding:0;
+    }
+  </style>
+
+  <div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+
+  <div class="app-layout__content">
+    <span class="govuk-caption-l">Add to an existing component</span>
+    <h1>Check your answers before submitting the component</h1>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+    <h2 class="govuk-heading-m">Component details</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "How the component is being used in your service"
+            },
+            value: {
+              text: data['component-how-used'] or "There was a need because sometimes user have to wait was sometimes up to 15 seconds due to the amount of data."
+            },
+            actions: {
+              items: [
+                {
+                  href: "component-details",
+                  text: "Change",
+                  visuallyHiddenText: "how the component is being used in your service"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    <h2 class="govuk-heading-m">Your details</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data['user-name'] or 'Jayne Williams'
+            },
+            actions: {
+              items: [
+                {
+                  href: "user-details",
+                  text: "Change",
+                  visuallyHiddenText: "your name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: data['user-email'] or 'jwilliams@justive.digital.gov.uk'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence type"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    <form action="" method="POST">
+      {{ govukButton({
+      text: "Accept and send"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

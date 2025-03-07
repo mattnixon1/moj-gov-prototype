@@ -2,14 +2,13 @@
 
 
 {% block content %}
+<div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
   <div class="app-layout__content">
     <form action="" method="POST">
       <span class="govuk-caption-l">Add to an existing component</span>
-      <h1>Component code</h1>
-
-      <p>We recommend sending HTML, CSS, SASS, Javascript or Nunjucks.</p>
-
-      <p>You should only send the component code. It should not contain any personal or sensitive information. You can add more than one code example.</p>
+      <h1>Figma design</h1>
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
       {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
@@ -17,39 +16,27 @@
 
       {{ govukInput({
         label: {
-          text: "What language is the code written in?",
+          text: "Add the link to where the Figma design file is saved",
           classes: "govuk-label--m",
           isPageHeading: false
         },
         hint: {
-          text: "HTML, CSS, SASS, Javascript etc. If possible, the code should be in one language to make it easier for others to reuse."
+          text: "Review the sharing permissions for the Figma design file before sending it. Ensure the 'Who has access' and 'What they can do' fields are set so the team can view the file."
         },
-        id: "event-name",
-        name: "eventName",
+        id: "link-url",
+        name: "link-url",
         classes: "govuk-input--width-30"
       }) }}
 
       {{ govukCharacterCount({
-        name: "wordCount",
-        id: "word-count",
+        name: "link-info",
+        id: "link-info",
         maxwords: 250,
         hint: {
-          text: "Include any information that helps users add the code to their service to use"
+          text: "This may be the password for the file if it's protected or the link expiration date if you set one."
         },
         label: {
-          text: "How do you use the code? (optional)",
-          classes: "govuk-label--m",
-          isPageHeading: false
-        }
-      }) }}
-
-      {{ govukCharacterCount({
-        name: "wordCount",
-        id: "word-count",
-        maxlength: 10000,
-        rows: 30,
-        label: {
-          text: "Add the code",
+          text: "Additional information about the Figma design file (optional)",
           classes: "govuk-label--m",
           isPageHeading: false
         }
@@ -61,7 +48,7 @@
         }) }}
 
         {{ govukButton({
-          text: "Add another code example",
+          text: "Add another link",
           classes: "govuk-button--secondary"
         }) }}
       </div>

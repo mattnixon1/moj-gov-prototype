@@ -252,19 +252,120 @@ router.post('/v3/community/add-new-component/check-your-answers', (req, res) => 
     res.redirect('/v3/community/add-new-component/confirmation');
 });
 
-// ADD TO EXISTING COMPONENT
+// ADD TO EXISTING COMPONENT - USAGE
 
-router.post('/v3/community/add-new-component/component-owner', (req, res) => {
-    res.redirect('/v3/community/add-new-component/component-details');
+router.post('/v3/community/add-component-usage/component-details', (req, res) => {
+    res.redirect('/v3/community/add-component-usage/user-details');
 });
 
-// ADD CODE
+router.post('/v3/community/add-component-usage/user-details', (req, res) => {
+    res.redirect('/v3/community/add-component-usage/check-your-answers');
+});
+
+router.post('/v3/community/add-component-usage/check-your-answers', (req, res) => {
+    res.redirect('/v3/community/add-component-usage/confirmation');
+});
+
+// ADD TO EXISTING COMPONENT - ACCESSIBILITY
+
+router.post('/v3/community/add-findings/share-findings', (req, res) => {
+    if (req.session.data['share-external-audit'] === 'yes') {
+        res.redirect('/v3/community/add-findings/add-external-audit');
+    } else if (req.session.data['share-internal-audit'] === 'yes') {
+        res.redirect('/v3/community/add-findings/add-internal-audit');
+    } else if (req.session.data['share-assistive-tech'] === 'yes') {
+        res.redirect('/v3/community/add-findings/add-assistive-tech');
+    } else {
+        res.redirect('/v3/community/add-findings/user-details');
+    }
+});
+
+router.post('/v3/community/add-findings/add-external-audit', (req, res) => {
+    if (req.session.data['share-internal-audit'] === 'yes') {
+        res.redirect('/v3/community/add-findings/add-internal-audit');
+    } else if (req.session.data['share-assistive-tech'] === 'yes') {
+        res.redirect('/v3/community/add-findings/add-assistive-tech');
+    } else {
+        res.redirect('/v3/community/add-findings/user-details');
+    }
+});
+
+router.post('/v3/community/add-findings/add-internal-audit', (req, res) => {
+    if (req.session.data['share-assistive-tech'] === 'yes') {
+        res.redirect('/v3/community/add-findings/add-assistive-tech');
+    } else {
+        res.redirect('/v3/community/add-findings/user-details');
+    }
+});
+
+router.post('/v3/community/add-findings/add-assistive-tech', (req, res) => {
+    res.redirect('/v3/community/add-findings/user-details');
+});
+
+
+
+router.post('/v3/community/add-findings/user-details', (req, res) => {
+    res.redirect('/v3/community/add-findings/check-your-answers');
+});
+
+router.post('/v3/community/add-findings/check-your-answers', (req, res) => {
+    res.redirect('/v3/community/add-findings/confirmation');
+});
+
+// ADD TO EXISTING COMPONENT - DESIGN
+
+router.post('/v3/community/add-designs/share-design', (req, res) => {
+    res.redirect('/v3/community/add-designs/add-prototype');
+});
+
+router.post('/v3/community/add-designs/add-prototype', (req, res) => {
+    res.redirect('/v3/community/add-designs/add-figma');
+});
+
+router.post('/v3/community/add-designs/add-figma', (req, res) => {
+    res.redirect('/v3/community/add-designs/user-details');
+});
+
+router.post('/v3/community/add-designs/user-details', (req, res) => {
+    res.redirect('/v3/community/add-designs/check-your-answers');
+});
+
+router.post('/v3/community/add-designs/check-your-answers', (req, res) => {
+    res.redirect('/v3/community/add-designs/confirmation');
+});
+
+
+// ADD TO EXISTING COMPONENT - DESIGN
+
+router.post('/v3/community/add-designs/share-designs', (req, res) => {
+    if (req.session.data['share-prototype'] === 'yes') {
+        res.redirect('/v3/community/add-designs/add-prototype');
+    } else if (req.session.data['share-figma'] === 'yes') {
+        res.redirect('/v3/community/add-designs/add-figma');
+    } else {
+        res.redirect('/v3/community/add-designs/user-details');
+    }
+});
+
+router.post('/v3/community/add-designs/add-prototype', (req, res) => {
+    res.redirect('/v3/community/add-designs/add-figma');
+});
+
+router.post('/v3/community/add-designs/add-figma', (req, res) => {
+    res.redirect('/v3/community/add-designs/user-details');
+});
+
+router.post('/v3/community/add-designs/user-details', (req, res) => {
+    res.redirect('/v3/community/add-designs/check-your-answers');
+});
+
+router.post('/v3/community/add-designs/check-your-answers', (req, res) => {
+    res.redirect('/v3/community/add-designs/confirmation');
+});
+
+// ADD TO EXISTING COMPONENT - CODE
 
 router.post('/v3/community/add-code/add-code', (req, res) => {
-    res.redirect('/v3/community/add-code/share-more');
-});
-
-router.post('/v3/community/add-code/share-more', (req, res) => {
     res.redirect('/v3/community/add-code/user-details');
 });
 

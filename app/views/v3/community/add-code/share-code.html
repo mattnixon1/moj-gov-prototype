@@ -2,6 +2,9 @@
 
 
 {% block content %}
+<div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
   <div class="app-layout__content">
     <form action="" method="POST">
       <span class="govuk-caption-l">Add to an existing component</span>
@@ -9,8 +12,7 @@
 
       <p>If sending code, we recommend sending HTML, CSS, SASS, Javascript or Nunjucks as these are common in government.</p>
 
-      <p>You should only send the component code and not the full page of code. This ensures it's easy for others to understand and use. The code should not contain any personal or sensitive information.</p>
-
+      <p>You should only send the component code and not the full page of code. This ensures it's easy for others to understand and use. The code should not contain any personally identifiable or sensitive information.</p>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -36,9 +38,16 @@
         ]
       }) }}
 
-      {{ govukButton({
-      text: "Continue"
-    }) }}
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {{ govukButton({
+          text: "Skip question",
+          classes: "govuk-button--secondary"
+        }) }}
+      </div>
     </form>
   </div>
 {% endblock %}

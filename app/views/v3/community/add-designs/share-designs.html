@@ -1,0 +1,73 @@
+{% extends "/layouts/base-v3.html" %}
+
+{% block content %}
+  <div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+  <div class="app-layout__content">
+    <form action="" method="POST">
+      <span class="govuk-caption-l">Add to an existing component</span>
+      <h1>Designs</h1>
+
+      <p>Most teams have a prototype or designs of the product or service they're currently working on. A prototype showing the component is helpful when reviewing new submissions to the design system.</p>
+
+      <p>Any prototype you share should not contain any personally Identifiable or sensitive information. You should only shared it if you can guarantee it will always be live and available to other users.</p>
+
+      <p>The prototype link can be from the GOV.UK Prototype Kit, Figma, Sketch, Mural or Miro.</p>
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        name: "share-prototype",
+        fieldset: {
+          legend: {
+            text: "Do you have a prototype link for the component?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+      {{ govukRadios({
+        name: "share-figma",
+        fieldset: {
+          legend: {
+            text: "Do you have a Figma design file for the component?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+          },
+          {
+            value: "no",
+            text: "No"
+          }
+        ]
+      }) }}
+
+     
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+       
+      </div>
+    </form>
+  </div>
+{% endblock %}

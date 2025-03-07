@@ -1,0 +1,167 @@
+{% extends "/layouts/base-v3.html" %}
+
+{#
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+#}
+
+{% block content %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  <style>
+    .app-prose-scope ul {
+      padding:0;
+    }
+  </style>
+
+  <div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+
+  <div class="app-layout__content">
+    <span class="govuk-caption-l">Add to an existing component</span>
+   
+    <h1>Check your answers before submitting the component</h1>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+
+
+    <h2 class="govuk-heading-m">Component code</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Code language"
+            },
+            value: {
+              text: data['code-language'] or "HTML"
+            },
+            actions: {
+              items: [
+                {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                },
+                {
+                  href: "add-code",
+                  text: "Change",
+                  visuallyHiddenText: "component code language"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Code usage"
+            },
+            value: {
+              text: data['code-usage'] or "Add this code to your main application.scss file or embed on page if used once."
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-code",
+                  text: "Change",
+                  visuallyHiddenText: "component code usage"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Code"
+            },
+            value: {
+              text: data['code-code'] or '.app-loading-spinner {
+  &__spinner{
+    border: 12px solid #DEE0E2;
+    border-radius: 50%;
+    border-top-color: #005EA5;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    margin-bottom: 1.5em;
+  }
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}'
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-code",
+                  text: "Change",
+                  visuallyHiddenText: "component code"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data['user-name'] or 'Jayne Williams'
+            },
+            actions: {
+              items: [
+                {
+                  href: "user-details",
+                  text: "Change",
+                  visuallyHiddenText: "your name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: data['user-email'] or 'jwilliams@justive.digital.gov.uk'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence type"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    <form action="" method="POST">
+      {{ govukButton({
+      text: "Accept and send"
+    }) }}
+    </form>
+  </div>
+{% endblock %}

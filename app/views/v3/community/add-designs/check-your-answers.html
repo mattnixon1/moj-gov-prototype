@@ -1,0 +1,178 @@
+{% extends "/layouts/base-v3.html" %}
+
+{#
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+{% endblock %}
+#}
+
+{% block content %}
+  {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+  <style>
+    .app-prose-scope ul {
+      padding:0;
+    }
+  </style>
+
+  <div style="padding:0 60px 0 60px">
+    <a href="javascript:window.history.back()" class="govuk-back-link">Back</a>
+  </div>
+
+  <div class="app-layout__content">
+    <span class="govuk-caption-l">Add to an existing component</span>
+    <h1>Check your answers before submitting the component</h1>
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+
+
+    <h2 class="govuk-heading-m">Prototype designs</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Prototype link"
+            },
+            value: {
+              text: data['share-link'] or "http://testinglink-gov-prototype.com/v5"
+            },
+            actions: {
+              items: [
+                {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                },
+                {
+                  href: "add-link",
+                  text: "Change",
+                  visuallyHiddenText: "prototype file and links address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Additional information"
+            },
+            value: {
+              text: data['link-info'] or "GOV.UK prototype of the spinner being used in the [insert service]. The prototype password is [password] and the link supplied is a direct link to the version where we tested the spinner."
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-link",
+                  text: "Change",
+                  visuallyHiddenText: "prototype file and links information"
+                }
+              ]
+            }
+          }  
+        ]
+      }) }}
+
+    
+
+      <h2 class="govuk-heading-m">Figma designs</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Prototype link"
+            },
+            value: {
+              text: data['share-link'] or "http://figma.com/moj-components"
+            },
+            actions: {
+              items: [
+                {
+                  href: "remove-file",
+                  text: "Remove",
+                  visuallyHiddenText: "the image of the component"
+                },
+                {
+                  href: "add-link",
+                  text: "Change",
+                  visuallyHiddenText: "prototype file and links address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Additional information"
+            },
+            value: {
+              text: data['link-info'] or "Figma file containing the spinner component. There are other variations as well as some in context examples that were taken to an accessibility audit."
+            },
+            actions: {
+              items: [
+                {
+                  href: "add-link",
+                  text: "Change",
+                  visuallyHiddenText: "prototype file and links information"
+                }
+              ]
+            }
+          }  
+        ]
+      }) }}
+
+    <h2 class="govuk-heading-m">Your details</h2>
+
+    {{ govukSummaryList({
+        classes: "govuk-!-margin-bottom-9",
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: data['user-name'] or 'Jayne Williams'
+            },
+            actions: {
+              items: [
+                {
+                  href: "user-details",
+                  text: "Change",
+                  visuallyHiddenText: "your name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: data['user-email'] or 'jwilliams@justive.digital.gov.uk'
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "licence type"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+    <form action="" method="POST">
+      {{ govukButton({
+      text: "Accept and send"
+    }) }}
+    </form>
+  </div>
+{% endblock %}
