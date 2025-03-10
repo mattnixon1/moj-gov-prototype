@@ -255,6 +255,10 @@ router.post('/v3/community/add-new-component/check-your-answers', (req, res) => 
 // ADD TO EXISTING COMPONENT - USAGE
 
 router.post('/v3/community/add-component-usage/component-details', (req, res) => {
+    res.redirect('/v3/community/add-component-usage/component-screenshot');
+});
+
+router.post('/v3/community/add-component-usage/component-screenshot', (req, res) => {
     res.redirect('/v3/community/add-component-usage/user-details');
 });
 
